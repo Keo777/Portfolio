@@ -245,7 +245,7 @@ return () => {
         
       </div>
       </div>
-      <div id="section2" className='w-[100%] h-[100vh] bg-[#000]'>
+      <div id="section2" className='w-[100%] h-[100vh] bg-[#fff]'>
       
       </div>
       
