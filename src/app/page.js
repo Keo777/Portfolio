@@ -1,113 +1,255 @@
+'use client';
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import Hero5 from "./Hero5";
+import BgLines1 from "./bglines";
+
+
+// Register ScrollTrigger plugin with GSAP
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const avatar = useRef(null);
+  const avatar2 = useRef(null);
+  const avatar3 = useRef(null);
+  const avatar4 = useRef(null);
+  const avatar5 = useRef(null);
+  const nav = useRef(null);
+  const tint = useRef(null);
+  const [activeVideo, setActiveVideo] = useState(3);
+
+  const toggleVideo = (videoIndex) => {
+    setActiveVideo(videoIndex);
+  };
+
+  const cycleVideo = () => {
+    setActiveVideo((prevVideo) => (prevVideo % 3) + 1);
+  };
+
+  useEffect(() => {
+    const animateIntro = async () => {
+     
+      const tl = gsap.timeline({defaults: {ease: 'power4.inOut'},  });
+
+      tl
+        .to(avatar.current, {
+          y: 0,
+          x: 0,
+          duration: 1.5,
+          delay: 0.5,
+        })
+        .to(avatar.current, {
+          opacity: 1,
+          duration: 2,
+        }, "<")
+        .to(avatar.current, {
+          x: "4%",
+          opacity: 0.6,
+          duration: 4,
+        }, "-=.5")
+        .to(avatar2.current, {
+          x: "0%",
+          opacity: 0.40,
+          duration: 4,
+        }, "<")
+        
+        .to(avatar3.current, {
+          x: "-5%",
+          opacity: 0.20,
+          duration: 4,
+        }, "-=4")
+        .to(avatar4.current, {
+          x: "-10%",
+          opacity: 0.1,
+          duration: 4,
+          
+        }, "-=4")
+        .to(avatar5.current, {
+          x: "-15%",
+          opacity: 0.05,
+          duration: 4,
+          onComplete: setupScrollAnimations,
+        }, "-=4")
+        .to(tint.current, {
+          opacity: '10%',
+          duration: 2.5,
+        }, "-=3")
+        .to(nav.current, {
+          y: 0,
+          duration: 2,
+        }, "-=2.5")
+
+    }
+
+    const setupScrollAnimations = () => {
+
+
+      // Adding ScrollTrigger animation for avatar2, avatar3, and avatar4
+      gsap.to(avatar.current, {
+        x: "10%",
+        opacity: 0,
+        scrollTrigger: {
+          trigger: avatar.current,
+          start: "top 9%", // start when the top of the element hits the bottom of the viewport
+          end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
+          scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
+        },
+      });
+
+      gsap.to(avatar2.current, {
+        x: "-5%",
+        opacity: 0.0,
+        scrollTrigger: {
+          trigger: avatar2.current,
+          start: "top 11%", // start when the top of the element hits the bottom of the viewport
+          end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
+          scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
+        },
+      });
+
+      gsap.to(avatar3.current, {
+        x: "-20%",
+        opacity: 0.0,
+        scrollTrigger: {
+          trigger: avatar3.current,
+          start: "top 13%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+
+      gsap.to(avatar4.current, {
+        x: "-35%",
+        opacity: 0,
+        scrollTrigger: {
+          trigger: avatar4.current,
+          start: "top 15%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+
+      gsap.to(avatar5.current, {
+        x: "-50%",
+        opacity: 0,
+        scrollTrigger: {
+          trigger: avatar4.current,
+          start: "top 17%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+    };
+
+    animateIntro();
+
+     // Mouse movement effect for 3D tilt
+const maxRotate = 15; // Maximum rotation in degrees
+
+const handleMouseMove = (e) => {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  const deltaX = centerX - mouseX;
+  const deltaY = centerY - mouseY;
+  const rotateX = Math.max(-maxRotate, Math.min(maxRotate, deltaY * 0.08)); // Clamp rotationX
+  const rotateY = Math.max(-maxRotate, Math.min(maxRotate, deltaX * 0.08)); // Clamp rotationY
+
+  animateAvatars(rotateX, rotateY);
+};
+
+const handleDeviceOrientation = (e) => {
+  const rotateX = Math.max(-maxRotate, Math.min(maxRotate, e.beta * 1)); // Clamp rotationX from beta
+  const rotateY = Math.max(-maxRotate, Math.min(maxRotate, e.gamma * 1)); // Clamp rotationY from gamma
+
+  animateAvatars(rotateX, rotateY);
+};
+
+const animateAvatars = (rotateX, rotateY) => {
+  const avatars = [avatar.current, avatar2.current, avatar3.current, avatar4.current, avatar5.current];
+  
+  avatars.forEach((avatar, index) => {
+    const scale = (index + 1) / avatars.length; // Scale factor from 0.2 to 1
+    const scaledRotateX = rotateX * scale;
+    const scaledRotateY = rotateY * scale;
+
+    gsap.to(avatar, {
+      rotationX: scaledRotateX,
+      rotationY: -scaledRotateY,
+      delay: 0.1 * index,
+      transformPerspective: 500,
+      ease: "power2.out",
+      duration: 2,
+    });
+  });
+};
+
+window.addEventListener("mousemove", handleMouseMove);
+window.addEventListener("deviceorientation", handleDeviceOrientation);
+
+return () => {
+  window.removeEventListener("mousemove", handleMouseMove);
+  window.removeEventListener("deviceorientation", handleDeviceOrientation);
+};
+
+  }, []);
+
+    // Colors corresponding to each video index
+    const colors = {
+      1: "radial-gradient(circle, #ff2727, #ff2086, #df5ed2, #908bfd, #00a7ff)",
+      2: "radial-gradient(circle, #ff9727, #f0614f, #c43f6a, #833471, #3d2d62)", // Example color
+      3: "radial-gradient(circle, #2786ff, #4469c0, #434e86, #363650, #212121)", // Example color
+    };
+  
+    useEffect(() => {
+      // Change the background color of the tint div
+      if (tint.current) {
+        tint.current.style.backgroundImage = colors[activeVideo] || "radial-gradient(circle, #2786ff, #4469c0, #434e86, #363650, #212121)";
+      }
+    }, [activeVideo]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main id="main" className='relative bg-[#fff]'>
+      <div ref={nav} className='translate-y-[-80%] flex header w-[100%] fixed z-[100] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
+        <div className='logo cursor-pointer m-5 w-[10%] uppercase'>
+          <span className='text-[clamp(1.5rem,2vw,4rem)] pl-[5%]'>Keoniis</span>
+        </div>
+        <div className='nav flex items-center'>
+          <ul className='mx-5 flex flex-column relative text-[clamp(0.9rem,0.75vw,2rem)] uppercase'>
+            <li className='p-[1.5vw]'>Home</li>
+            <li className='p-[1.5vw]'>About</li>
+            <li className='p-[1.5vw]'>Services</li>
+            <li className='p-[1.5vw]'>Work</li>
+            <li className='p-[1.5vw]'>Contact</li>
+          </ul>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      
+      <div className='relative h-[100vh] w-[100%] top-0 left-0 bg-[#0f0f0f] overflow-hidden'>
+      <BgLines1 />
+      {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
+      <div ref={tint} className='bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
+      <div className='noise w-[400%] h-[400%] left-[-100%] top-[-100%] mx-auto fixed z-[5]'></div>
+       <div className='relative h-full w-full left-0 right-0 mx-auto'>
+      <Image ref={avatar} id="avatar" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='translate-x-[60%] opacity-0 w-[80%] max-w-[600px] md:max-w-[650px]  xl:max-w-[730px] 2xl:max-w-[850px] absolute bottom-[0%] 2xl:bottom-[0%] top-0 right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[4]' />
+      <Image ref={avatar2} id="avatar2" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[77%] max-w-[560px] md:max-w-[610px]  xl:max-w-[690px] 2xl:max-w-[810px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-1%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[3]' />
+      <Image ref={avatar3} id="avatar3" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[74%] max-w-[520px] md:max-w-[570px]  xl:max-w-[650px] 2xl:max-w-[770px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-2%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[2]' />
+      <Image ref={avatar4} id="avatar4" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[71%] max-w-[480px] md:max-w-[530px]  xl:max-w-[610px] 2xl:max-w-[730px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-3%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
+      <Image ref={avatar5} id="avatar5" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[68%] max-w-[440px] md:max-w-[490px]  xl:max-w-[570px] 2xl:max-w-[690px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-4%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
+      
+      
+        <Hero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
+        
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
       </div>
+      <div className='w-[100%] h-[70vh] bg-[#080808]'>
+      
+      </div>
+      
+      
     </main>
   );
 }

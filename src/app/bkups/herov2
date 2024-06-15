@@ -1,0 +1,118 @@
+'use client'
+// components/Hero.js
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import Image from 'next/image';
+import SplitType from "split-type";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Hero = () => {
+  const heroRef = useRef(null);
+  const topPanelRef = useRef(null);
+  const bottomPanelRef = useRef(null);
+  const firstlineRef = useRef(null);
+  const nameRef = useRef(null);
+
+
+  useEffect(() => {
+     // Splittext
+    const firstline = new SplitType('#firstline');
+    const name = new SplitType('#name');
+
+    gsap.set(topPanelRef.current, { yPercent: 0 });
+    gsap.set(bottomPanelRef.current, { yPercent: 0 });
+
+    const tl = gsap.timeline({ defaults: { ease: 'power4.inOut', } });
+    
+
+    gsap.to(topPanelRef.current, {
+      yPercent: -150,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: 'top top',
+    
+        scrub: true,
+      },
+    });
+
+    gsap.to(bottomPanelRef.current, {
+      yPercent: 150,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: 'bottom bottom',
+
+        scrub: true,
+      },
+    });
+
+    {/*gsap.to(name.chars, {
+        x: (index) => (index <= 3 ? '-100rem' : '100rem'),
+        opacity: 0,
+        duration: 2,
+        stagger: {each: '0.05', from: "edges"},
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'bottom bottom',
+          end: 'bottom 60%',
+          scrub: true,
+        },
+      });
+
+      gsap.to(firstline.chars, {
+        x: (index) => (index <= 3 ? '-100rem' : '100rem'),
+        opacity: 0,
+        duration: 2,
+        stagger: {each: '0.05', from: "edges"},
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'bottom bottom',
+          end: 'bottom 60%',
+          scrub: true,
+        },
+      });*/}
+
+    
+  }, []);
+
+  return (
+    <div ref={heroRef} style={{ position: 'fixed', height: '100vh' }} className='w-full top-0 left-0 z-[50] text-[#f2f2f2] uppercase'>
+      <div
+        ref={topPanelRef}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '50vh',
+          zIndex: 50,
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+        }}
+        className='flex justify-center bg-[#222]'>
+        {/*<Image id="avatar" src={'/images/keoniis-20.png'} height={1460} width={928} className='w-[900px] absolute bottom-[-60vh] right-[5%] opacity-1 z-[60]' />*/}
+        <h1 id="firstline" ref={firstlineRef} className='text-[20.75rem] mr-[5px] leading-[20rem] font-[GothamBlack] tracking-tighter absolute bottom-[60px] inline-block'>Hello, I'm</h1></div>
+      <div
+        ref={bottomPanelRef}
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '50vh',
+          zIndex: 50,
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+        }}
+        className='flex justify-center radial-gradient'>
+            {/*<Image id="avatar" src={'/images/keoniis-20.png'} height={1460} width={928} className='w-[900px] absolute bottom-[-10vh] right-[5%] opacity-1 z-[60]' />*/}
+            <h1 id="name" ref={nameRef} className='text-[25rem] leading-[20rem] font-[GothamBlack] tracking-tighter absolute top-0 text-[#fcff56] z-[61] inline-block'>Keoniis.</h1></div>
+      
+    </div>
+  );
+};
+
+export default Hero;

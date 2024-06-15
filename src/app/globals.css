@@ -2,6 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.inter-sans {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
+
+.mont-light {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.mont-heavy {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Monument';
+  src: local('Monument'), url(../fonts/MonumentExtended-Regular.otf) format('woff');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'GothamBlack';
+  src: local('GothamBlack'), url(../fonts/gotham/Gotham-Black.otf) format('opentype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'GothamMedium';
+  src: local('GothamMedium'), url(../fonts/gotham/GothamMedium.ttf) format('opentype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+
+@font-face {
+  font-family: 'Akerley';
+  src: local('Akerley'), url(../fonts/akerley.otf) format('opentype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'Aeternus';
+  src: local('Aeternus'), url(../fonts/aeternus.otf) format('opentype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'Porlane';
+  src: url('../fonts/Porlane-Regular.eot');
+  src: local('../fonts/Porlane Regular'), local('../fonts/Porlane-Regular'),
+      url('../fonts/Porlane-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Porlane-Regular.woff2') format('woff2'),
+      url('../fonts/Porlane-Regular.woff') format('woff'),
+      url('../fonts/Porlane-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PorlaneSlanted';
+  src: url('../fonts/Porlane-Slanted.eot');
+  src: local('../fonts/Porlane Slanted'), local('../fonts/Porlane-Slanted'),
+      url('../fonts/Porlane-Slanted.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Porlane-Slanted.woff2') format('woff2'),
+      url('../fonts/Porlane-Slanted.woff') format('woff'),
+      url('../fonts/Porlane-Slanted.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kajiro';
+  src: url('../fonts/Kajiro.eot');
+  src: local('../fonts/Kajiro'),
+      url('../fonts/Kajiro.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Kajiro.woff2') format('woff2'),
+      url('../fonts/Kajiro.woff') format('woff'),
+      url('../fonts/Kajiro.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -24,6 +129,363 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.bg-gradient {
+  background-image: linear-gradient(
+  330deg,
+  hsl(27deg 97% 34%) 0%,
+  hsl(11deg 65% 42%) 22%,
+  hsl(355deg 56% 45%) 36%,
+  hsl(342deg 59% 43%) 45%,
+  hsl(330deg 54% 41%) 51%,
+  hsl(315deg 44% 39%) 57%,
+  hsl(288deg 35% 39%) 63%,
+  hsl(257deg 32% 42%) 71%,
+  hsl(226deg 42% 39%) 83%,
+  hsl(205deg 100% 27%) 100%
+);
+}
+
+.bg-image {
+  background: url("/images/bg-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
+box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
+}
+
+.text-shadow {
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 1),
+             -3px 3px 5px rgba(0, 0, 0, 1);
+}
+
+.blurred {
+  filter: blur(0rem);
+}
+
+{/*h1 .char {
+  transition: transform;
+  transform: translateY(10rem);
+  opacity: 0;
+}*/}
+
+{/*Glowing Text*/}
+
+.glowingText {
+  text-align: center;
+}
+
+.letter {
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  }
+}
+
+
+/*Reflective Text*/
+
+.container {
+  position: relative;
+  width: max-content;
+}
+
+.text {
+  font-size: 2rem;
+  color: #333; /* Change color as needed */
+}
+
+.reflection {
+  font-size: 2rem;
+  position: absolute;
+  bottom: -.8em; /* Adjust this value to control the gap between text and reflection */
+  transform: scaleY(-1);
+  opacity: 0.5; /* Adjust opacity for desired reflection effect */
+}
+
+.radial-gradient {
+  background: radial-gradient(ellipse at center, #e9ff6e -40%, #660000 0%, #00354e 110%);
+}
+
+.radial-gradienttop {
+  background: radial-gradient(ellipse at top, #2c2c2c 0%, #111111 70%);
+}
+
+
+.noise {
+  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  background-repeat: repeat;
+  animation: bg-animation .2s infinite;
+  opacity: 100%;
+  visibility: visible;
+}
+
+.mirrory {
+  -moz-transform:    scaleY(-1); /* Gecko */
+  -o-transform:      scaleY(-1); /* Opera */
+  -webkit-transform: scaleY(-1); /* Webkit */
+  transform:         scaleY(-1); /* Standard */
+
+  filter: FlipH;      
+}
+
+.clip-half-bottom {
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0% 100%);
+}
+
+.clip-half-top {
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+@keyframes rotate {
+  0% {
+           transform: rotate(0deg);
+       }
+       100% {
+           transform: rotate(360deg);
+       }
+   }
+   .out-top {
+       animation: rotate 20s linear infinite;
+       transform-origin: 13px 25px;
+   }
+   .in-top {
+       animation: rotate 10s linear infinite;
+       transform-origin: 13px 25px;
+   }
+   .out-bottom {
+       animation: rotate 25s linear infinite;
+       transform-origin: 84px 93px;
+   }
+   .in-bottom {
+       animation: rotate 15s linear infinite;
+       transform-origin: 84px 93px;
+   }
+
+@keyframes bg-animation {
+  0% { transform: translate(0,0) }
+  10% { transform: translate(-5%,-5%) }
+  20% { transform: translate(-10%,5%) }
+  30% { transform: translate(5%,-10%) }
+  40% { transform: translate(-5%,15%) }
+  50% { transform: translate(-10%,5%) }
+  60% { transform: translate(15%,0) }
+  70% { transform: translate(0,10%) }
+  80% { transform: translate(-15%,0) }
+  90% { transform: translate(10%,5%) }
+  100% { transform: translate(5%,0) }
+}
+
+/* styles/globals.css for laser component */
+.laser {
+  position: absolute;
+  width: 2px;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0));
+  pointer-events: none;
+  transform-origin: top center;
+}
+
+.fontswap {
+  font-display: swap;
+}
+
+.fontclamp {
+  font-size: clamp(30rem, 40vw, 35rem);
+}
+
+@media (max-width: 1450px) {
+  .perspective {
+    transform: perspective(550px);
+  }
+}
+
+@media (max-height:500px) and (max-width: 1450px) {
+  .perspective {
+    transform: perspective(400px);
+  }
+}
+
+@media (max-height:400px) and (max-width: 1450px) {
+  .perspective {
+    transform: perspective(300px);
+  }
+}
+
+@media (max-height:300px) and (max-width: 1450px) {
+  .perspective {
+    transform: perspective(200px);
+  }
+}
+
+@media (max-height:200px) and (max-width: 1450px) {
+  .perspective {
+    transform: perspective(100px);
+  }
+}
+
+@media (min-width: 1450px) and (max-width: 2050px) {
+  .perspective {
+    transform: perspective(1000px);
+  }
+  .perspectivetopdiv {
+    transform: perspective(8000px);
+  }
+}
+
+/*BG Lines*/
+.lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  margin: auto;
+  width: 100vw;
+}
+
+.line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 30%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.line::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  bottom: -50%;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+  -webkit-animation: drop2 7s 2s infinite;
+          animation: drop2 7s 2s infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+}
+.line:nth-child(1) {
+  margin-left: -20%;
+}
+.line:nth-child(1)::after {
+  -webkit-animation: drop 7s 0s infinite;
+          animation: drop 7s 0s infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+}
+.line:nth-child(2) {
+  margin-left: 20%;
+}
+.line:nth-child(2)::after {
+  -webkit-animation: drop 7s 1s infinite;
+          animation: drop 7s 1s infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+}
+
+.line:nth-child(3) {
+  margin-left: 40%;
+}
+.line:nth-child(3)::after {
+  -webkit-animation: drop2 7s 2s infinite;
+          animation: drop2 7s 2s infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+}
+
+.line:nth-child(4) {
+  margin-left: 60%;
+}
+.line:nth-child(4)::after {
+  -webkit-animation: drop 7s 0s infinite;
+          animation: drop 7s 0s infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
+}
+
+
+@-webkit-keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+@keyframes drop {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+@-webkit-keyframes drop2 {
+  0% {
+    bottom: -50%;
+  }
+  100% {
+    bottom: 110%;
+  }
+}
+
+@keyframes drop2 {
+  0% {
+    bottom: -50%;
+  }
+  100% {
+    bottom: 110%;
+  }
+}
+
+/* Text Split Heading */
+
+.split {
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+}
+
+.split2 {
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+ path.animated {
+  stroke-dasharray: 30px;
+  stroke-dashoffset: 0px;
+  animation: line-anim 4s linear infinite;
+
+}
+
+@keyframes line-anim {
+  to {
+    stroke-dashoffset: 60px;
+  }
 }
 
 @layer utilities {
