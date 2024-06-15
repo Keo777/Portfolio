@@ -228,7 +228,7 @@ return () => {
         </div>
       </div>
       
-      <div id="section1" className='h-screen w-full relative bg-[#0f0f0f]'>
+      <div id="section1" className='h-[calc(100vh-70px)] md:h-screen w-full relative bg-[#0f0f0f]'>
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
