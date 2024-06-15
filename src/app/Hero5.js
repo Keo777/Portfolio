@@ -156,7 +156,7 @@ return () => {
           <span ref={firsttext} className='translate-y-[100%] opacity-0 inline-block split2'>Hey There,</span>
         </div>
         <div className="overflow-hidden text-[clamp(30px,6vw,70px)] leading-[clamp(30px,6vw,70px)] 2xl:ml-[10%] uppercase font-[monument] text-[#fff] tracking-[0rem] whitespace-nowrap">
-          <span ref={secondtext} className='translate-y-[-100%] opacity-0 inline-block split'>My Name's</span>
+          <span ref={secondtext} className='translate-y-[-100%] opacity-0 inline-block split'>My Name&apos;s</span>
         </div>
         </div>
         <div className='w-[100%] h-[auto] xl:w-[50%] absolute bottom-0 left-0 top-[50%] xl:top-[38%] m-auto text-center'>
@@ -188,7 +188,7 @@ return () => {
               <path className='translate-y-[-100%] cls-1' d="m435.55,53.84c0,8.22,5.95,11.99,28.43,11.99,18.61,0,24.28-2.36,24.28-8.41,0-6.42-3.96-7.56-26.36-8.79-30.04-1.51-42.04-6.89-42.04-24.37s15.49-22.57,41.28-22.57,41.75,7.37,41.75,26.55h-17.76c0-8.6-7.56-10.68-25.98-10.68s-21.64,1.89-21.64,7.65c0,6.05,4.15,7.08,24.28,8.41,27.2,1.7,44.02,3.31,44.02,23.05,0,20.78-17.47,25.03-42.98,25.03-28.24,0-45.15-5.48-45.15-27.87h17.85,0Z"/>
             </clipPath>
           </defs>
-          <foreignObject x="0" y="0" width="100%" height="100%" clipPath="url(#clipPath)">
+          <foreignObject x="0" y="0" width="100%" height="100%" style={{ clipPath: 'url(#clipPath)', WebkitClipPath: 'url(#clipPath)' }}>
     <div style={{ width: '100%', height: '100%', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.01)' }}>
       {showYoyoVideo && <YoyoVideo activeVideo={activeVideo} toggleVideo={toggleVideo} />}
     </div>
