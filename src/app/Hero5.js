@@ -156,7 +156,7 @@ return () => {
           <span ref={firsttext} className='translate-y-[100%] opacity-0 inline-block split2'>Hey There,</span>
         </div>
         <div className="overflow-hidden text-[clamp(30px,6vw,70px)] leading-[clamp(30px,6vw,70px)] 2xl:ml-[10%] uppercase font-[monument] text-[#fff] tracking-[0rem] whitespace-nowrap">
-          <span ref={secondtext} className='translate-y-[-100%] opacity-0 inline-block split'>My Name's</span>
+          <span ref={secondtext} className='translate-y-[-100%] opacity-0 inline-block split'>My Name&apos;s</span>
         </div>
         </div>
         <div className='w-[100%] h-[auto] xl:w-[50%] absolute bottom-0 left-0 top-[50%] xl:top-[38%] m-auto text-center'>
