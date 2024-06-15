@@ -150,7 +150,7 @@ return () => {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ height: '100%' }} className='w-full left-0 top-0 absolute z-[6]'>
+    <div ref={containerRef} style={{ height: '100%' }} className='w-full h-full left-0 top-0 absolute z-[6]'>
       <div className='w-[100%] h-[auto] xl:w-[50%] absolute bottom-0 left-0 top-[50%] xl:top-[40%] m-auto text-center'>
         <div className="overflow-hidden text-[clamp(30px,6vw,70px)] leading-[clamp(30px,6vw,70px)] uppercase font-[monument] text-[#fff] tracking-[0rem] whitespace-nowrap">
           <span ref={firsttext} className='translate-y-[100%] opacity-0 inline-block split2'>Hey There,</span>

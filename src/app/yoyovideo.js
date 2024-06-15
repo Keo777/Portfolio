@@ -35,7 +35,7 @@ const YoyoVideo = ({ activeVideo }) => {
         id="video1"
         muted
         loop
-        className="blurred w-[100%] h-[100%] absolute bottom-[0%] left-0 object-cover opacity-0"
+        className="blurred w-[100%] h-[100%] absolute top-[0%] left-0 object-cover opacity-0"
       >
         <source src="/images/bgacid3.webm" type="video/webm" />
       </video>
