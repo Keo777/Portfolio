@@ -174,7 +174,7 @@ return () => {
       </div>*/}
       <div className='absolute w-[97%] 2xl:w-[90%] h-auto bottom-[2%] left-0 right-0 mx-auto z-[5]'>
         
-      <svg onClick={cycleVideo} ref={svgRef} id="herologo" width="100%" height="100%" viewBox="0 0 507 85" preserveAspectRatio="none" className='cursor-pointer'>
+      <svg onClick={cycleVideo} ref={svgRef} id="herologo1111" width="100%" height="100%" viewBox="0 0 507 85" preserveAspectRatio="none" className='cursor-pointer'>
           <defs>
             <clipPath id="clipPath">
               <path className='translate-y-[-100%] cls-1' d="m54.31,38.12l42.48,43.21h-24.94l-30.81-32.26-21.52,17.36v14.9H1.5V3.59h18.01v40.29L69.48,3.59h27.31l-42.48,34.53Z"/>
