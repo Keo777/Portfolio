@@ -212,7 +212,7 @@ return () => {
     }, [activeVideo]);
 
   return (
-    <main id="main" className='relative bg-[#fff]'>
+    <main id="main" className='bg-[#fff]'>
       <div ref={nav} className='translate-y-[-80%] flex header w-[100%] fixed z-[100] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
         <div className='logo cursor-pointer m-5 w-[10%] uppercase'>
           <span className='text-[clamp(1.5rem,2vw,4rem)] pl-[5%]'>Keoniis</span>
@@ -228,12 +228,12 @@ return () => {
         </div>
       </div>
       
-      <div className='relative h-[100vh] w-[100%] top-0 left-0 bg-[#0f0f0f] overflow-hidden'>
+      <div className='h-full w-full bg-[#0f0f0f]'>
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
       <div className='noise w-[400%] h-[400%] left-[-100%] top-[-100%] mx-auto fixed z-[5]'></div>
-       <div className='relative h-full w-full left-0 right-0 mx-auto'>
+       <div className=' h-full w-full left-0 right-0 mx-auto'>
       <Image alt="avatarimg" ref={avatar} id="avatar" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='translate-x-[60%] opacity-0 w-[80%] max-w-[600px] md:max-w-[650px]  xl:max-w-[730px] 2xl:max-w-[850px] absolute bottom-[0%] 2xl:bottom-[0%] top-0 right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[4]' />
       <Image alt="avatarimg" ref={avatar2} id="avatar2" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[77%] max-w-[560px] md:max-w-[610px]  xl:max-w-[690px] 2xl:max-w-[810px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-1%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[3]' />
       <Image alt="avatarimg" ref={avatar3} id="avatar3" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[74%] max-w-[520px] md:max-w-[570px]  xl:max-w-[650px] 2xl:max-w-[770px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-2%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[2]' />
@@ -245,7 +245,7 @@ return () => {
         
       </div>
       </div>
-      <div className='w-[100%] h-[70vh] bg-[#080808]'>
+      <div className='w-[100%] h-[100vh] bg-[#080808]'>
       
       </div>
       
