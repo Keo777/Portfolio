@@ -488,6 +488,10 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
   }
 }
 
+.webkitclip {
+  -webkit-clip-path: url(#clipPath);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
