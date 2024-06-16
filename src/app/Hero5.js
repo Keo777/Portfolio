@@ -188,7 +188,11 @@ return () => {
               <path className='translate-y-[-100%] cls-1' d="m435.55,53.84c0,8.22,5.95,11.99,28.43,11.99,18.61,0,24.28-2.36,24.28-8.41,0-6.42-3.96-7.56-26.36-8.79-30.04-1.51-42.04-6.89-42.04-24.37s15.49-22.57,41.28-22.57,41.75,7.37,41.75,26.55h-17.76c0-8.6-7.56-10.68-25.98-10.68s-21.64,1.89-21.64,7.65c0,6.05,4.15,7.08,24.28,8.41,27.2,1.7,44.02,3.31,44.02,23.05,0,20.78-17.47,25.03-42.98,25.03-28.24,0-45.15-5.48-45.15-27.87h17.85,0Z"/>
             </clipPath>
           </defs>
-  
+          <foreignObject x="0" y="0" width="100%" height="100%" style={{ clipPath: 'url(#clipPath)', WebkitClipPath: 'url(#clipPath)',}}>
+    <div style={{ width: '100%', height: '100%', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.01)' }}>
+      {showYoyoVideo && <YoyoVideo activeVideo={activeVideo} toggleVideo={toggleVideo} />}
+    </div>
+  </foreignObject>
 
             <path stroke="rgba(255, 255, 255, 0.15)" strokeWidth="0.5" strokeLinejoin="round" strokeLinecap="round" fill="none" className='translate-y-[-100%] cls-1' d="m54.31,38.12l42.48,43.21h-24.94l-30.81-32.26-21.52,17.36v14.9H1.5V3.59h18.01v40.29L69.48,3.59h27.31l-42.48,34.53Z"/>
             <path stroke="rgba(255, 255, 255, 0.15)" strokeWidth="0.5" strokeLinejoin="round" strokeLinecap="round" fill="none" className='translate-y-[-100%] cls-1' d="m177.47,41.61c0-25.88,13.08-40.11,43.52-40.11s43.52,14.32,43.52,40.11-13.18,40.29-43.52,40.29-43.52-14.32-43.52-40.29Zm69.31,0c0-15.83-7.11-23.23-25.69-23.23s-25.69,7.3-25.69,23.23,7.21,23.42,25.69,23.42,25.69-7.49,25.69-23.42Z"/>
@@ -213,21 +217,6 @@ return () => {
             
           
         </svg>
-        <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          clipPath: 'url(#clipPath)',
-          WebkitClipPath: 'url(#clipPath)', // for Safari
-        }}
-      >
-        <div style={{ width: '100%', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.01)' }}>
-          {showYoyoVideo && <YoyoVideo activeVideo={activeVideo} toggleVideo={toggleVideo} />}
-        </div>
-      </div>
       </div>
       
     </div>
