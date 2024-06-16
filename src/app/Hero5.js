@@ -197,7 +197,12 @@ return () => {
     {/* Render the YoyoVideo component within the clipped area */}
     <foreignObject x="0" y="0" width="100%" height="100%">
     <div style={{ width: '100%', height: '100%', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.01)' }}>
-    {showYoyoVideo && <YoyoVideo activeVideo={activeVideo} toggleVideo={toggleVideo} />}
+    {showYoyoVideo && (
+          <video autoPlay muted loop playsInline style={{ width: '100%', height: '100%' }}>
+            <source src="/images/bg11.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
     </div>
     </foreignObject>
   </g>
