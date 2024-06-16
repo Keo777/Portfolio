@@ -191,7 +191,7 @@ return () => {
             </clipPath>
           </defs>
           <foreignObject x="0" y="0" width="100%" height="100%" style={{ clipPath: 'url(#clipPath)', WebkitClipPath: 'url(#clipPath)',}} className='inline-block'>
-    <div style={{ width: '100%', height: '100%', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
+    <div style={{ width: '100%', height: '100%', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.5)', position: 'fixed' }}>
       {showYoyoVideo && <YoyoVideo activeVideo={activeVideo} toggleVideo={toggleVideo} />}
     </div>
   </foreignObject>
