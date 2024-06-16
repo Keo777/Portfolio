@@ -18,6 +18,7 @@
     "react-dom": "^18",
     "react-tsparticles": "^2.9.3",
     "split-type": "^0.3.4",
+    "svg4everybody": "^2.1.9",
     "three": "^0.165.0",
     "tsparticles": "^3.4.0"
   },

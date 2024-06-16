@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import Image from 'next/image';
 import YoyoVideo from './yoyovideo';
+import svg4everybody from 'svg4everybody';
 
 const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
   const containerRef = useRef(null);
@@ -13,8 +14,9 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
   const [showYoyoVideo, setShowYoyoVideo] = useState(false);
 
   useEffect(() => {
+    svg4everybody();
     const animateIntro = async () => {
-
+      
     const tl = gsap.timeline({defaults: {ease: 'power4.inOut'}})
 
     tl
