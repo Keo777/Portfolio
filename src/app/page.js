@@ -5,6 +5,9 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Hero5 from "./Hero5";
 import BgLines1 from "./bglines";
+import dynamic from 'next/dynamic';
+
+const DynamicHero5 = dynamic(() => import('./Hero5'), { ssr: false });
 
 
 // Register ScrollTrigger plugin with GSAP
@@ -241,7 +244,7 @@ return () => {
       <Image alt="avatarimg" ref={avatar5} id="avatar5" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[68%] max-w-[440px] md:max-w-[490px]  xl:max-w-[570px] 2xl:max-w-[690px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-4%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
       
       
-        <Hero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
+        <DynamicHero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
         
       </div>
       </div>

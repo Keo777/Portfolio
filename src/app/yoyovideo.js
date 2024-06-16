@@ -15,17 +15,26 @@ const YoyoVideo = ({ activeVideo }) => {
 
   useEffect(() => {
     videoRefs.forEach((ref, index) => {
-      if (index === activeVideo - 1) {
-        gsap.to(ref.current, { opacity: 1, duration: 1 });
-        ref.current.play();
+      const video = ref.current;
+  
+      // Ensure video element and HTMLVideoElement methods are available
+      if (video instanceof HTMLVideoElement) {
+        if (index === activeVideo - 1) {
+          gsap.to(video, { opacity: 1, duration: 1 });
+          video.play().catch(error => {
+            // Handle play promise rejection (e.g., autoplay policy)
+            console.error('Error playing video:', error);
+          });
+        } else {
+          gsap.to(video, { opacity: 0, duration: 1 });
+          video.pause();
+          video.currentTime = 0; // Optional: reset video to start
+        }
       } else {
-        gsap.to(ref.current, { opacity: 0, duration: 1 });
-        ref.current.pause();
-        ref.current.currentTime = 0; // Optional: reset video to start
+        console.warn('Ref is not pointing to an HTMLVideoElement:', video);
       }
     });
-  }, [activeVideo]);
-
+  }, [activeVideo, videoRefs]);
   
 
   return (
@@ -35,7 +44,7 @@ const YoyoVideo = ({ activeVideo }) => {
         id="video1"
         muted
         loop
-        className="blurred w-[100%] h-[100%] absolute top-[0%] left-0 object-cover opacity-0"
+        className="blurred w-[100%] h-[100%] absolute bottom-[0%] left-0 object-cover opacity-0"
       >
         <source src="/images/bgacid3.webm" type="video/webm" />
       </video>
