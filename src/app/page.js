@@ -235,7 +235,7 @@ return () => {
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
-      <div className='noise w-[400%] h-[400%] left-[-100%] top-[-100%] mx-auto fixed z-[5]'></div>
+      <div className='noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[5]'></div>
        <div className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
       <Image alt="avatarimg" ref={avatar} id="avatar" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='translate-x-[60%] opacity-0 w-[80%] max-w-[600px] md:max-w-[650px]  xl:max-w-[730px] 2xl:max-w-[850px] absolute bottom-[0%] 2xl:bottom-[0%] top-0 right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[4]' />
       <Image alt="avatarimg" ref={avatar2} id="avatar2" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[77%] max-w-[560px] md:max-w-[610px]  xl:max-w-[690px] 2xl:max-w-[810px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-1%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[3]' />
