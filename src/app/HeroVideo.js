@@ -2,7 +2,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
-const YoyoVideo = ({ activeVideo }) => {
+const HeroVideo = ({ activeVideo }) => {
   const videoRefs = [useRef(null), useRef(null), useRef(null)];
   const container = useRef(null);
 
@@ -74,4 +74,4 @@ const YoyoVideo = ({ activeVideo }) => {
   );
 };
 
-export default YoyoVideo;
+export default HeroVideo;

@@ -203,8 +203,8 @@ return () => {
     // Colors corresponding to each video index
     const colors = {
       1: "radial-gradient(circle, #ff2727, #ff2086, #df5ed2, #908bfd, #00a7ff)",
-      2: "radial-gradient(circle, #ff9727, #f0614f, #c43f6a, #833471, #3d2d62)", // Example color
-      3: "radial-gradient(circle, #2786ff, #4469c0, #434e86, #363650, #212121)", // Example color
+      2: "radial-gradient(circle, #ff9727, #f0614f, #c43f6a, #833471, #3d2d62)", 
+      3: "radial-gradient(circle, #2786ff, #4469c0, #434e86, #363650, #212121)", 
     };
   
     useEffect(() => {
