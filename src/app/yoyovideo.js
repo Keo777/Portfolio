@@ -44,6 +44,7 @@ const YoyoVideo = ({ activeVideo }) => {
         id="video1"
         muted
         loop
+        playsInline
         className="blurred w-[100%] h-[100%] absolute bottom-[0%] left-0 object-cover opacity-0"
       >
         <source src="/images/bgacid3.webm" type="video/webm" />
@@ -53,6 +54,7 @@ const YoyoVideo = ({ activeVideo }) => {
         id="video2"
         muted
         loop
+        playsInline
         className="blurred w-[100%] h-[100%] absolute bottom-[0%] left-0 object-cover opacity-0"
       >
         <source src="/images/bgacid2.webm" type="video/webm" />
@@ -63,6 +65,7 @@ const YoyoVideo = ({ activeVideo }) => {
         autoPlay
         muted
         loop
+        playsInline
         className="blurred w-[100%] h-[100%] absolute bottom-[0%] left-0 object-cover"
       >
         <source src="/images/bg11.mp4" type="video/mp4" />
