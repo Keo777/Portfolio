@@ -65,7 +65,7 @@
   .toggle input + div svg {
     display: block;
     fill: none;
-    stroke: #fff;
+    stroke: #ffffff;
     stroke-width: 2px;
     width: 44px;
     height: 44px;
@@ -104,14 +104,10 @@
     transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
   }
   .toggle input:checked + div svg {
-    stroke-dashoffset: 60;
-    stroke-dasharray: 0 82.801 60 82.801;
+    stroke-dashoffset: 62;
+    stroke-dasharray: 0 82.801 62 82.801;
     transform: rotate(90deg);
-    stroke-width: 4px;
-    width: 40px;
-    height: 40px;
-    margin: -20px 0 0 -20px;
-    stroke: #ffffff80;
+    stroke: #ffffff;
   }
   .toggle input:checked + div svg:nth-child(3) {
     transform: rotate(270deg);
