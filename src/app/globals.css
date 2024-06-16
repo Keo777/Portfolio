@@ -374,7 +374,7 @@ path.animated-ios {
   }
 }
 
-@keyframes line-anim {
+@keyframes line-anim-ios {
   to {
     stroke-dashoffset: 160px;
   }
