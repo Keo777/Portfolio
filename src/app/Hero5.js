@@ -184,7 +184,7 @@ return () => {
         <button className='w-full' onClick={() => toggleVideo(2)}>Video 2</button>
         <button className='w-full' onClick={() => toggleVideo(3)}>Video 3</button>
       </div>*/}
-      <div className='absolute w-[97%] 2xl:w-[90%] h-auto bottom-[2%] left-0 right-0 mx-auto z-[5]'>
+      <div className='absolute w-[97%] h-auto bottom-[7%] md:bottom-[2%] left-0 right-0 mx-auto z-[5]'>
         
       <svg onClick={cycleVideo} ref={svgRef} id="herologo" width="100%" height="100%" viewBox="0 0 507 85" preserveAspectRatio="none" className='cursor-pointer'>
           <defs>
