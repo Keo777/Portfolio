@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import Hero5 from "./Hero5";
 import BgLines1 from "./bglines";
 import dynamic from 'next/dynamic';
+import styles from './components/ToggleSwitch.module.css';
 
 const DynamicHero5 = dynamic(() => import('./Hero5'), { ssr: false });
 
@@ -220,7 +220,7 @@ return () => {
         <div className='logo cursor-pointer m-5 w-[10%] uppercase'>
           <span className='text-[clamp(1.5rem,2vw,4rem)] pl-[5%]'>Keoniis</span>
         </div>
-        <div className='nav flex items-center'>
+        <div className='hidden lg:inline-block nav items-center'>
           <ul className='mx-5 flex flex-column relative text-[clamp(0.9rem,0.75vw,2rem)] uppercase'>
             <li className='p-[1.5vw]'>Home</li>
             <li className='p-[1.5vw]'>About</li>
@@ -228,6 +228,30 @@ return () => {
             <li className='p-[1.5vw]'>Work</li>
             <li className='p-[1.5vw]'>Contact</li>
           </ul>
+        </div>
+        <div className='lg:hidden m-7'>
+        <label className={styles.toggle}>
+        <input type="checkbox" />
+        <div>
+          <div>
+            <span></span>
+            <span></span>
+          </div>
+          <svg>
+            <use xlinkHref="#path"></use>
+          </svg>
+          <svg>
+            <use xlinkHref="#path"></use>
+          </svg>
+        </div>
+      </label>
+
+      <svg xmlns="http://www.w3.org/2000/svg" style={{ display: 'none' }}>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" id="path">
+          <path d="M22,22 L2,22 C2,11 11,2 22,2 C33,2 42,11 42,22"></path>
+        </symbol>
+      </svg>
+
         </div>
       </div>
       

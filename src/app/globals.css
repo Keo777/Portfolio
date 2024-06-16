@@ -147,12 +147,7 @@ body {
 );
 }
 
-.bg-image {
-  background: url("/images/bg-img.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
-}
+
 
 .box-shadow {
   -webkit-box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
@@ -175,46 +170,6 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
   opacity: 0;
 }*/}
 
-{/*Glowing Text*/}
-
-.glowingText {
-  text-align: center;
-}
-
-.letter {
-  animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-  0% {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-  100% {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-  }
-}
-
-
-/*Reflective Text*/
-
-.container {
-  position: relative;
-  width: max-content;
-}
-
-.text {
-  font-size: 2rem;
-  color: #333; /* Change color as needed */
-}
-
-.reflection {
-  font-size: 2rem;
-  position: absolute;
-  bottom: -.8em; /* Adjust this value to control the gap between text and reflection */
-  transform: scaleY(-1);
-  opacity: 0.5; /* Adjust opacity for desired reflection effect */
-}
-
 .radial-gradient {
   background: radial-gradient(ellipse at center, #e9ff6e -40%, #660000 0%, #00354e 110%);
 }
@@ -231,6 +186,21 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
   opacity: 100%;
   visibility: visible;
 }
+
+@keyframes bg-animation {
+  0% { transform: translate(0,0) }
+  10% { transform: translate(-5%,-5%) }
+  20% { transform: translate(-10%,5%) }
+  30% { transform: translate(5%,-10%) }
+  40% { transform: translate(-5%,15%) }
+  50% { transform: translate(-10%,5%) }
+  60% { transform: translate(15%,0) }
+  70% { transform: translate(0,10%) }
+  80% { transform: translate(-15%,0) }
+  90% { transform: translate(10%,5%) }
+  100% { transform: translate(5%,0) }
+}
+
 
 .mirrory {
   -moz-transform:    scaleY(-1); /* Gecko */
@@ -249,100 +219,9 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
   clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
 }
 
-@keyframes rotate {
-  0% {
-           transform: rotate(0deg);
-       }
-       100% {
-           transform: rotate(360deg);
-       }
-   }
-   .out-top {
-       animation: rotate 20s linear infinite;
-       transform-origin: 13px 25px;
-   }
-   .in-top {
-       animation: rotate 10s linear infinite;
-       transform-origin: 13px 25px;
-   }
-   .out-bottom {
-       animation: rotate 25s linear infinite;
-       transform-origin: 84px 93px;
-   }
-   .in-bottom {
-       animation: rotate 15s linear infinite;
-       transform-origin: 84px 93px;
-   }
-
-@keyframes bg-animation {
-  0% { transform: translate(0,0) }
-  10% { transform: translate(-5%,-5%) }
-  20% { transform: translate(-10%,5%) }
-  30% { transform: translate(5%,-10%) }
-  40% { transform: translate(-5%,15%) }
-  50% { transform: translate(-10%,5%) }
-  60% { transform: translate(15%,0) }
-  70% { transform: translate(0,10%) }
-  80% { transform: translate(-15%,0) }
-  90% { transform: translate(10%,5%) }
-  100% { transform: translate(5%,0) }
-}
-
-/* styles/globals.css for laser component */
-.laser {
-  position: absolute;
-  width: 2px;
-  height: 100vh;
-  background: linear-gradient(to bottom, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0));
-  pointer-events: none;
-  transform-origin: top center;
-}
-
-.fontswap {
-  font-display: swap;
-}
 
 .fontclamp {
   font-size: clamp(30rem, 40vw, 35rem);
-}
-
-@media (max-width: 1450px) {
-  .perspective {
-    transform: perspective(550px);
-  }
-}
-
-@media (max-height:500px) and (max-width: 1450px) {
-  .perspective {
-    transform: perspective(400px);
-  }
-}
-
-@media (max-height:400px) and (max-width: 1450px) {
-  .perspective {
-    transform: perspective(300px);
-  }
-}
-
-@media (max-height:300px) and (max-width: 1450px) {
-  .perspective {
-    transform: perspective(200px);
-  }
-}
-
-@media (max-height:200px) and (max-width: 1450px) {
-  .perspective {
-    transform: perspective(100px);
-  }
-}
-
-@media (min-width: 1450px) and (max-width: 2050px) {
-  .perspective {
-    transform: perspective(1000px);
-  }
-  .perspectivetopdiv {
-    transform: perspective(8000px);
-  }
 }
 
 /*BG Lines*/
@@ -486,10 +365,6 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
   to {
     stroke-dashoffset: 60px;
   }
-}
-
-.webkitclip {
-  -webkit-clip-path: url(#clipPath);
 }
 
 @layer utilities {
