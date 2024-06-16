@@ -12,6 +12,16 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
   const fourthtext = useRef(null);
   const svgRef = useRef(null);
   const [showYoyoVideo, setShowYoyoVideo] = useState(false);
+  const [shouldRenderYoyoVideo, setShouldRenderYoyoVideo] = useState(true); // Default to true, meaning it renders on non-iOS devices
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipad|ipod/.test(userAgent);
+
+    if (isIOS) {
+      setShouldRenderYoyoVideo(false); // Disable rendering on iOS devices
+    }
+  }, []);
 
   useEffect(() => {
     svg4everybody();
@@ -191,8 +201,8 @@ return () => {
             </clipPath>
           </defs>
           <foreignObject x="0" y="0" width="100%" height="100%" style={{ clipPath: 'url(#clipPath)', WebkitClipPath: 'url(#clipPath)',}} className='inline-block'>
-    <div style={{ width: '100%', height: '100%', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.5)', position: 'fixed' }}>
-      {showYoyoVideo && <YoyoVideo activeVideo={activeVideo} toggleVideo={toggleVideo} />}
+    <div style={{ width: '100%', height: '100%', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0.25)' }}>
+      {shouldRenderYoyoVideo && showYoyoVideo && <YoyoVideo activeVideo={activeVideo} toggleVideo={toggleVideo} />}
     </div>
   </foreignObject>
 
