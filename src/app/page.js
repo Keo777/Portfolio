@@ -286,7 +286,7 @@ return () => {
 
   return (
     <main id="main" className='bg-[#fff] overflow-hidden'>
-      <div ref={nav} className='translate-y-[-80%] flex header w-[100%] h-[clamp(50px,5vw,100px)] fixed z-[20] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
+      <div ref={nav} className='translate-y-[-100%] flex header w-[100%] h-[clamp(50px,5vw,100px)] fixed z-[20] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
         <div className='logo cursor-pointer m-[clamp(10px,1vw,25px)] w-[auto] uppercase'>
         <svg id="herologo" ref={svgRef} width="100%" height="100%" viewBox="0 0 532.16 75.54" preserveAspectRatio="xMinYMin meet" className='cursor-pointer'>
             <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m55.73,34.37l44.76,40.57h-26.28l-32.51-30.35-22.69,16.37v13.97H0V1.94h19v37.86L71.67,1.94h28.82l-44.76,32.43Z"/>
@@ -302,12 +302,12 @@ return () => {
           </svg>
         </div>
         <div ref={xlMenu} className="w-auto h-auto flex absolute top-0 left-0 right-0 mx-auto items-center justify-center">
-          <ul className='flex uppercase text-[clamp(10px,1.5vw,25px)]'>
-            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>Home</li>
-            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>About</li>
-            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>Services</li>
-            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>Work</li>
-            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>Contact</li>
+          <ul className='flex uppercase text-[clamp(8px,1.5vw,25px)]'>
+            <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>Home</li>
+            <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>About</li>
+            <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>Services</li>
+            <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>Work</li>
+            <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>Contact</li>
           </ul>
         </div>
         
