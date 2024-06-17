@@ -21,6 +21,7 @@ export default function Home() {
   const avatar4 = useRef(null);
   const avatar5 = useRef(null);
   const nav = useRef(null);
+  const xlMenu = useRef(null);
   const svgRef = useRef(null);
   const tint = useRef(null);
   const [activeVideo, setActiveVideo] = useState(3);
@@ -106,7 +107,7 @@ export default function Home() {
           opacity: '10%',
           duration: 2.5,
         }, "-=3")
-        .to([nav.current, menuContainer.current], {
+        .to(nav.current, {
           y: 0,
           x: 0,
           duration: 2,
@@ -186,6 +187,33 @@ export default function Home() {
         toggleActions: 'play none reverse reverse',
       },
     });
+
+      gsap.to(xlMenu.current, {
+        y: "-5rem",
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.inOut',
+        scrollTrigger: {
+          trigger: section1.current,
+          start: 'bottom 50%',
+          toggleActions: 'play none reverse reverse',
+        },
+      });
+
+      gsap.to(menuContainer.current, {
+        y: 0,
+        x: 0,
+        display: 'block',
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.inOut',
+        scrollTrigger: {
+          trigger: section1.current,
+          start: 'bottom 50%',
+          toggleActions: 'play none reverse reverse',
+        },
+      });
     };
 
     animateIntro();
@@ -273,9 +301,18 @@ return () => {
             
           </svg>
         </div>
+        <div ref={xlMenu} className="w-auto h-auto flex absolute top-0 left-0 right-0 mx-auto items-center justify-center">
+          <ul className='flex uppercase text-[clamp(10px,1.5vw,25px)]'>
+            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>Home</li>
+            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>About</li>
+            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>Services</li>
+            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>Work</li>
+            <li className='mx-[clamp(15px,2vw,40px)] my-[2rem]'>Contact</li>
+          </ul>
+        </div>
         
         </div>
-        <div ref={menuContainer} onMouseOver={handleMenuHover} onClick={handleMenuClick} onMouseLeave={handleMenuLeave} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} fixed top-0 right-0 w-auto h-[auto] z-[50]`}>
+        <div ref={menuContainer} onMouseOver={handleMenuHover} onClick={handleMenuClick} onMouseLeave={handleMenuLeave} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} xl:hidden fixed top-0 right-0 w-auto h-[auto] z-[50]`}>
         <div ref={menuBtn} className='menu m-[1.5rem] 2xl:m-[2.75rem] absolute top-0 right-0 z-[51]' >
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
