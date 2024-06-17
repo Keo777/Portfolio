@@ -84,32 +84,59 @@
   .toggle input + div svg:nth-child(3) {
     transform: rotate(180deg) scale(1);
   }
-  .toggle input:checked + div div {
+  .toggle input.active + div div {
     transform: rotate(90deg);
   }
-  .toggle input:checked + div div span:before,
-  .toggle input:checked + div div span:after {
+  .toggle input.active + div div span:before,
+  .toggle input.active + div div span:after {
     background: #fff;
   }
-  .toggle input:checked + div div span:first-child:before {
+  .toggle input.active + div div span:first-child:before {
     transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
   }
-  .toggle input:checked + div div span:first-child:after {
+  .toggle input.active + div div span:first-child:after {
     transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
   }
-  .toggle input:checked + div div span:last-child:before {
+  .toggle input.active + div div span:last-child:before {
     transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
   }
-  .toggle input:checked + div div span:last-child:after {
+  .toggle input.active + div div span:last-child:after {
     transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
   }
-  .toggle input:checked + div svg {
+  .toggle input.active + div svg {
     stroke-dashoffset: 62;
     stroke-dasharray: 0 82.801 62 82.801;
     transform: rotate(90deg);
     stroke: #ffffff;
   }
-  .toggle input:checked + div svg:nth-child(3) {
+  .toggle input.active + div svg:nth-child(3) {
     transform: rotate(270deg);
   }
+
   
+
+  .nav ul {
+    position: fixed;
+    z-index: 200;
+    display: none;
+  }
+  
+  .nav:before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  transition: all 500ms ease-in-out;
+  clip-path: circle(25px at calc(100% - 55px) 35px);
+  z-index: 25;
+  }
+  
+  
+  .nav.active:before {
+  clip-path: circle(100%);
+  background: #111;
+  }

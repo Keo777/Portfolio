@@ -22,6 +22,17 @@ export default function Home() {
   const nav = useRef(null);
   const tint = useRef(null);
   const [activeVideo, setActiveVideo] = useState(3);
+  const menuBtn = useRef(null);
+  const menu = useRef(null);
+  const [menuActive, setMenuActive] = useState(false);
+
+  const handleMenuClick = (e) => {
+    // Prevent default behavior and stop propagation to avoid multiple toggles
+    e.preventDefault();
+    e.stopPropagation();
+    setMenuActive(prevState => !prevState);
+    console.log("Menu active state toggled to:", !menuActive);
+  };
 
   const toggleVideo = (videoIndex) => {
     setActiveVideo(videoIndex);
@@ -216,7 +227,7 @@ return () => {
 
   return (
     <main id="main" className='bg-[#fff] overflow-hidden'>
-      <div ref={nav} className='translate-y-[-80%] flex header w-[100%] fixed z-[100] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
+      <div ref={nav} className='translate-y-[-80%] flex header w-[100%] fixed z-[30] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
         <div className='logo cursor-pointer m-5 w-[10%] uppercase'>
           <span className='text-[clamp(1.5rem,2vw,4rem)] pl-[5%]'>Keoniis</span>
         </div>
@@ -229,9 +240,9 @@ return () => {
             <li className='p-[1.5vw]'>Contact</li>
           </ul>
         </div>
-        <div className='lg:hidden m-7'>
-        <label className={styles.toggle}>
-        <input type="checkbox" />
+        <div ref={menuBtn} className='menu lg:hidden m-7' onClick={handleMenuClick}>
+        <label className={`${styles.toggle}`}>
+        <input className={`${menuActive ? `${styles.active}` : 'notactive'} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
         <div>
           <div>
             <span></span>
@@ -251,11 +262,21 @@ return () => {
           <path d="M22,22 L2,22 C2,11 11,2 22,2 C33,2 42,11 42,22"></path>
         </symbol>
       </svg>
-
         </div>
+        
       </div>
       
-      <div id="section1" className='h-[calc(100vh-40px)] md:h-screen w-full relative bg-[#0f0f0f]'>
+      <nav ref={menu} className={`${menuActive ? `${styles.active}` : 'notactive'} ${styles.nav}`}>
+        <ul>
+          <li>element one</li>
+          <li>element two</li>
+          <li>element three</li>
+          <li>element four</li>
+        </ul>
+      </nav>
+      
+      
+      <div id="section1" className='h-[calc(100vh-40px)] md:h-screen w-full relative bg-[#000]'>
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
