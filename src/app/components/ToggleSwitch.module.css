@@ -198,7 +198,7 @@
       clip-path: circle(2.5rem at calc(100% - 3.85rem) 3.45rem);
     }
     .nav.active:before {
-      clip-path: circle(100% at calc(100% - -50%) 50%);
+      clip-path: circle(110% at calc(100% - -50%) 50%);
       background: #111;
       }
     
