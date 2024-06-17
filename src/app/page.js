@@ -22,6 +22,7 @@ export default function Home() {
   const nav = useRef(null);
   const tint = useRef(null);
   const [activeVideo, setActiveVideo] = useState(3);
+  const menuContainer = useRef(null);
   const menuBtn = useRef(null);
   const menu = useRef(null);
   const [menuActive, setMenuActive] = useState(false);
@@ -90,8 +91,9 @@ export default function Home() {
           opacity: '10%',
           duration: 2.5,
         }, "-=3")
-        .to(nav.current, {
+        .to([nav.current, menuContainer.current], {
           y: 0,
+          x: 0,
           duration: 2,
         }, "-=2.5")
 
@@ -241,9 +243,10 @@ return () => {
           </ul>
         </div>
         </div>
-        <div ref={menuBtn} className='menu lg:hidden m-[2rem] fixed top-0 right-0 z-[50] mix-blend-difference' onClick={handleMenuClick}>
+        <div ref={menuContainer} className={`${styles.menucontainer} translate-x-[15%] fixed top-0 right-0 w-full h-[auto] z-[50]`}>
+        <div ref={menuBtn} className='menu lg:hidden m-[2rem] absolute top-0 right-0 z-[51] mix-blend-difference' onClick={handleMenuClick}>
         <label className={`${styles.toggle}`}>
-        <input className={`${menuActive ? `${styles.active}` : 'notactive'} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
+        <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
         <div>
           <div>
             <span></span>
@@ -264,10 +267,8 @@ return () => {
         </symbol>
       </svg>
         </div>
-        
-      
-      
-      <nav ref={menu} className={`${menuActive ? `${styles.active}` : 'notactive'} ${styles.nav} lg:hidden`}>
+  
+      <nav ref={menu} className={`${menuActive && `${styles.active}`} ${styles.nav} lg:hidden`}>
         <ul>
           <li>element one</li>
           <li>element two</li>
@@ -275,9 +276,10 @@ return () => {
           <li>element four</li>
         </ul>
       </nav>
+      </div>
       
       
-      <div id="section1" className='h-[calc(100vh-40px)] md:h-screen w-full relative bg-[#000]'>
+      <div id="section1" className='h-[calc(100vh-60px)] md:h-screen w-full relative bg-[#000]'>
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
