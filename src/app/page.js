@@ -20,6 +20,7 @@ export default function Home() {
   const avatar4 = useRef(null);
   const avatar5 = useRef(null);
   const nav = useRef(null);
+  const svgRef = useRef(null);
   const tint = useRef(null);
   const [activeVideo, setActiveVideo] = useState(3);
   const menuContainer = useRef(null);
@@ -157,6 +158,21 @@ export default function Home() {
           scrub: true,
         },
       });
+
+      const svgPaths = svgRef.current.querySelectorAll('path');
+    gsap.to(svgPaths, {
+      y: 0,
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: 'power4.inOut',
+      scrollTrigger: {
+        trigger: avatar4.current,
+        start: 'bottom 50%',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
     };
 
     animateIntro();
@@ -229,22 +245,25 @@ return () => {
 
   return (
     <main id="main" className='bg-[#fff] overflow-hidden'>
-      <div ref={nav} className='translate-y-[-80%] flex header w-[100%] fixed z-[20] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
-        <div className='logo cursor-pointer m-5 w-[10%] uppercase'>
-          <span className='text-[clamp(1.5rem,2vw,4rem)] pl-[5%]'>Keoniis</span>
+      <div ref={nav} className='translate-y-[-80%] flex header w-[100%] h-[clamp(70px,6vw,100px)] fixed z-[20] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
+        <div className='logo cursor-pointer mx-6 mt-[1.75rem] w-[auto] uppercase'>
+        <svg id="herologo" ref={svgRef} width="100%" height="100%" viewBox="0 0 507 140" preserveAspectRatio="none" className='cursor-pointer'>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m54.31,38.12l42.48,43.21h-24.94l-30.81-32.26-21.52,17.36v14.9H1.5V3.59h18.01v40.29L69.48,3.59h27.31l-42.48,34.53Z"/>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m177.47,41.61c0-25.88,13.08-40.11,43.52-40.11s43.52,14.32,43.52,40.11-13.18,40.29-43.52,40.29-43.52-14.32-43.52-40.29Zm69.31,0c0-15.83-7.11-23.23-25.69-23.23s-25.69,7.3-25.69,23.23,7.21,23.42,25.69,23.42,25.69-7.49,25.69-23.42Z"/>
+            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m360.83,3.59v77.75h-24.27l-47.78-58.5v58.5h-18.01V3.59h24.18l47.88,58.69V3.59h18.01Z"/>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m386.43,81.33h-18.01V3.59h18.01v77.75Z"/>
+            <path className='translate-x-[-50%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m102.95,52.89v-19.91h69.21v19.91h-69.21Z"/>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m102.95,23.5V3.59h69.21v19.91h-69.21Z"/>
+            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m102.95,81.33v-19.91h69.21v19.91h-69.21Z"/>
+            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m412.03,81.33h-18.01V3.59h18.01v77.75Z"/>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m435.55,53.84c0,8.22,5.95,11.99,28.43,11.99,18.61,0,24.28-2.36,24.28-8.41,0-6.42-3.96-7.56-26.36-8.79-30.04-1.51-42.04-6.89-42.04-24.37s15.49-22.57,41.28-22.57,41.75,7.37,41.75,26.55h-17.76c0-8.6-7.56-10.68-25.98-10.68s-21.64,1.89-21.64,7.65c0,6.05,4.15,7.08,24.28,8.41,27.2,1.7,44.02,3.31,44.02,23.05,0,20.78-17.47,25.03-42.98,25.03-28.24,0-45.15-5.48-45.15-27.87h17.85,0Z"/>
+            
+          </svg>
         </div>
-        <div className='hidden lg:inline-block nav items-center'>
-          <ul className='mx-5 flex flex-column relative text-[clamp(0.9rem,0.75vw,2rem)] uppercase'>
-            <li className='p-[1.5vw]'>Home</li>
-            <li className='p-[1.5vw]'>About</li>
-            <li className='p-[1.5vw]'>Services</li>
-            <li className='p-[1.5vw]'>Work</li>
-            <li className='p-[1.5vw]'>Contact</li>
-          </ul>
+        
         </div>
-        </div>
-        <div ref={menuContainer} className={`${styles.menucontainer} translate-x-[25%] fixed top-0 right-0 w-full h-[auto] z-[50]`}>
-        <div ref={menuBtn} className='menu lg:hidden m-[2rem] absolute top-0 right-0 z-[51]' onClick={handleMenuClick}>
+        <div ref={menuContainer} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} translate-x-[25%] fixed top-0 right-0 w-full h-[auto] z-[50]`}>
+        <div ref={menuBtn} className='menu m-[2rem] 2xl:m-[2.75rem] absolute top-0 right-0 z-[51]' onClick={handleMenuClick}>
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
         <div>
@@ -268,7 +287,7 @@ return () => {
       </svg>
         </div>
   
-      <nav ref={menu} className={`${menuActive && `${styles.active}`} ${styles.nav} lg:hidden`}>
+      <nav ref={menu} className={`${menuActive && `${styles.active}`} ${styles.nav}`}>
         <ul>
           <li>element one</li>
           <li>element two</li>
