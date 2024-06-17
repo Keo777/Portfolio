@@ -51,7 +51,7 @@
     width: 47%;
     height: 2px;
     border-radius: 1px;
-    background: #fff;
+    background: #000;
     position: absolute;
     -webkit-backface-visibility: hidden;
     transition: transform 0.5s ease, border-radius 0.3s ease, background 0.4s ease;
@@ -69,7 +69,7 @@
   .toggle input + div svg {
     display: block;
     fill: none;
-    stroke: #ffffff;
+    stroke: #000;
     stroke-width: 2px;
     width: 44px;
     height: 44px;

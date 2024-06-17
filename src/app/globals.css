@@ -355,14 +355,14 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
 }
 
  path.animated {
-  stroke-dasharray: 30px;
+  stroke-dasharray: 120px;
   stroke-dashoffset: 0px;
   animation: line-anim 4s linear infinite;
 
 }
 
 path.animated-ios {
-  stroke-dasharray: 80px;
+  stroke-dasharray: 120px;
   stroke-dashoffset: 0px;
   animation: line-anim-ios 2s linear infinite;
 
@@ -370,13 +370,13 @@ path.animated-ios {
 
 @keyframes line-anim {
   to {
-    stroke-dashoffset: 60px;
+    stroke-dashoffset: 240px;
   }
 }
 
 @keyframes line-anim-ios {
   to {
-    stroke-dashoffset: 160px;
+    stroke-dashoffset: 240px;
   }
 }
 

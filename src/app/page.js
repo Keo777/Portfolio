@@ -243,8 +243,8 @@ return () => {
           </ul>
         </div>
         </div>
-        <div ref={menuContainer} className={`${styles.menucontainer} translate-x-[15%] fixed top-0 right-0 w-full h-[auto] z-[50]`}>
-        <div ref={menuBtn} className='menu lg:hidden m-[2rem] absolute top-0 right-0 z-[51] mix-blend-difference' onClick={handleMenuClick}>
+        <div ref={menuContainer} className={`${styles.menucontainer} translate-x-[25%] fixed top-0 right-0 w-full h-[auto] z-[50]`}>
+        <div ref={menuBtn} className='menu lg:hidden m-[2rem] absolute top-0 right-0 z-[51]' onClick={handleMenuClick}>
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
         <div>
