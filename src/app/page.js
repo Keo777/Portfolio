@@ -246,17 +246,17 @@ return () => {
   return (
     <main id="main" className='bg-[#fff] overflow-hidden'>
       <div ref={nav} className='translate-y-[-80%] flex header w-[100%] h-[clamp(70px,6vw,100px)] fixed z-[20] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
-        <div className='logo cursor-pointer mx-6 mt-[1.75rem] w-[auto] uppercase'>
-        <svg id="herologo" ref={svgRef} width="100%" height="100%" viewBox="0 0 507 140" preserveAspectRatio="none" className='cursor-pointer'>
-            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m54.31,38.12l42.48,43.21h-24.94l-30.81-32.26-21.52,17.36v14.9H1.5V3.59h18.01v40.29L69.48,3.59h27.31l-42.48,34.53Z"/>
-            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m177.47,41.61c0-25.88,13.08-40.11,43.52-40.11s43.52,14.32,43.52,40.11-13.18,40.29-43.52,40.29-43.52-14.32-43.52-40.29Zm69.31,0c0-15.83-7.11-23.23-25.69-23.23s-25.69,7.3-25.69,23.23,7.21,23.42,25.69,23.42,25.69-7.49,25.69-23.42Z"/>
-            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m360.83,3.59v77.75h-24.27l-47.78-58.5v58.5h-18.01V3.59h24.18l47.88,58.69V3.59h18.01Z"/>
-            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m386.43,81.33h-18.01V3.59h18.01v77.75Z"/>
-            <path className='translate-x-[-50%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m102.95,52.89v-19.91h69.21v19.91h-69.21Z"/>
-            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m102.95,23.5V3.59h69.21v19.91h-69.21Z"/>
-            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m102.95,81.33v-19.91h69.21v19.91h-69.21Z"/>
-            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m412.03,81.33h-18.01V3.59h18.01v77.75Z"/>
-            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m435.55,53.84c0,8.22,5.95,11.99,28.43,11.99,18.61,0,24.28-2.36,24.28-8.41,0-6.42-3.96-7.56-26.36-8.79-30.04-1.51-42.04-6.89-42.04-24.37s15.49-22.57,41.28-22.57,41.75,7.37,41.75,26.55h-17.76c0-8.6-7.56-10.68-25.98-10.68s-21.64,1.89-21.64,7.65c0,6.05,4.15,7.08,24.28,8.41,27.2,1.7,44.02,3.31,44.02,23.05,0,20.78-17.47,25.03-42.98,25.03-28.24,0-45.15-5.48-45.15-27.87h17.85,0Z"/>
+        <div className='logo cursor-pointer m-6 mt-[1.75rem] w-[auto] uppercase'>
+        <svg id="herologo" ref={svgRef} width="100%" height="100%" viewBox="0 0 532.16 75.54" preserveAspectRatio="none" className='cursor-pointer'>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m55.73,34.37l44.76,40.57h-26.28l-32.51-30.35-22.69,16.37v13.97H0V1.94h19v37.86L71.67,1.94h28.82l-44.76,32.43Z"/>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m185.6,37.86C185.6,13.64,199.38.38,231.53.38s45.93,13.36,45.93,37.47-13.88,37.68-45.93,37.68-45.93-13.36-45.93-37.68Zm73.07,0c0-14.82-7.52-21.71-27.14-21.71s-27.14,6.79-27.14,21.71,7.62,21.92,27.14,21.92,27.14-6.99,27.14-21.92Z"/>
+            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m379,1.94v73h-25.65l-50.35-54.75v54.75h-19V1.94h25.55l50.45,54.85V1.94h19Z"/>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m406,74.94h-19V1.94h19v73Z"/>
+            <path className='translate-x-[-50%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m106.55,48.24v-19h73v19h-73Z"/>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m106.55,20.94V1.94h73v19h-73Z"/>
+            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m106.55,75.54v-19h73v19h-73Z"/>
+            <path className='translate-y-[100%] cls-1'  stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m433,74.94h-19V1.94h19v73Z"/>
+            <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m457.65,48.94c0,7.72,6.26,11.27,30.05,11.27,19.72,0,25.67-2.19,25.67-7.93,0-6.05-4.17-7.1-27.86-8.24-31.83-1.46-44.45-6.47-44.45-22.85S457.44,0,484.78,0s44.24,6.89,44.24,24.94h-18.78c0-8.03-8.04-10.02-27.55-10.02-18.47,0-22.85,1.77-22.85,7.2s4.38,6.68,25.67,7.93c28.8,1.57,46.64,3.13,46.64,21.6,0,19.51-18.47,23.48-45.5,23.48-29.95,0-47.79-5.11-47.79-26.19h18.78Z"/>
             
           </svg>
         </div>

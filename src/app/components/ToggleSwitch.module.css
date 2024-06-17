@@ -182,7 +182,7 @@
   content: "";
   width: 100vw;
   height: 100vh;
-  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.562);
   transition: all 500ms ease-in-out;
   clip-path: circle(1.5rem at calc(100% - 2.625rem) 2.445rem);
   z-index: 25;
