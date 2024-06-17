@@ -60,7 +60,7 @@ export default function Home() {
         }, "<")
         .to(avatar.current, {
           x: "4%",
-          opacity: 0.6,
+          opacity: 0.75,
           duration: 4,
         }, "-=.5")
         .to(avatar2.current, {
@@ -227,7 +227,7 @@ return () => {
 
   return (
     <main id="main" className='bg-[#fff] overflow-hidden'>
-      <div ref={nav} className='translate-y-[-80%] flex header w-[100%] fixed z-[30] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
+      <div ref={nav} className='translate-y-[-80%] flex header w-[100%] fixed z-[20] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
         <div className='logo cursor-pointer m-5 w-[10%] uppercase'>
           <span className='text-[clamp(1.5rem,2vw,4rem)] pl-[5%]'>Keoniis</span>
         </div>
@@ -240,7 +240,8 @@ return () => {
             <li className='p-[1.5vw]'>Contact</li>
           </ul>
         </div>
-        <div ref={menuBtn} className='menu lg:hidden m-7' onClick={handleMenuClick}>
+        </div>
+        <div ref={menuBtn} className='menu lg:hidden m-[2rem] fixed top-0 right-0 z-[50] mix-blend-difference' onClick={handleMenuClick}>
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive ? `${styles.active}` : 'notactive'} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
         <div>
@@ -264,9 +265,9 @@ return () => {
       </svg>
         </div>
         
-      </div>
       
-      <nav ref={menu} className={`${menuActive ? `${styles.active}` : 'notactive'} ${styles.nav}`}>
+      
+      <nav ref={menu} className={`${menuActive ? `${styles.active}` : 'notactive'} ${styles.nav} lg:hidden`}>
         <ul>
           <li>element one</li>
           <li>element two</li>
