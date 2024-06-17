@@ -94,9 +94,10 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
       ease: 'power4.inOut',
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'bottom bottom',
+        start: 'bottom 50%',
         end: 'bottom top',
-        scrub: true,
+        scrub: false,
+        toggleActions: 'play reverse play reverse',
       },
     });
   };

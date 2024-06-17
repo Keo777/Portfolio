@@ -14,6 +14,7 @@ const DynamicHero5 = dynamic(() => import('./Hero5'), { ssr: false });
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const section1 = useRef(null);
   const avatar = useRef(null);
   const avatar2 = useRef(null);
   const avatar3 = useRef(null);
@@ -27,6 +28,19 @@ export default function Home() {
   const menuBtn = useRef(null);
   const menu = useRef(null);
   const [menuActive, setMenuActive] = useState(false);
+
+  const handleMenuHover = (e) => {
+    if (!menuActive) {
+      setMenuActive(true);
+    }
+  }
+
+  const handleMenuLeave = (e) => {
+    if (menuActive) {
+      setMenuActive(false);
+    }
+  }
+
 
   const handleMenuClick = (e) => {
     // Prevent default behavior and stop propagation to avoid multiple toggles
@@ -167,9 +181,9 @@ export default function Home() {
       duration: 1,
       ease: 'power4.inOut',
       scrollTrigger: {
-        trigger: avatar4.current,
+        trigger: section1.current,
         start: 'bottom 50%',
-        end: 'bottom top',
+        toggleActions: 'play none reverse reverse',
       },
     });
     };
@@ -261,8 +275,8 @@ return () => {
         </div>
         
         </div>
-        <div ref={menuContainer} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} translate-x-[25%] fixed top-0 right-0 w-full h-[auto] z-[50]`}>
-        <div ref={menuBtn} className='menu m-[1.5rem] 2xl:m-[2.75rem] absolute top-0 right-0 z-[51]' onClick={handleMenuClick}>
+        <div ref={menuContainer} onMouseOver={handleMenuHover} onClick={handleMenuClick} onMouseLeave={handleMenuLeave} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} fixed top-0 right-0 w-auto h-[auto] z-[50]`}>
+        <div ref={menuBtn} className='menu m-[1.5rem] 2xl:m-[2.75rem] absolute top-0 right-0 z-[51]' >
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
         <div>
@@ -297,7 +311,7 @@ return () => {
       </div>
       
       
-      <div id="section1" className='h-[calc(100vh-60px)] md:h-screen w-full relative bg-[#000]'>
+      <div ref={section1} id="section1" className='h-[calc(100vh-60px)] md:h-screen w-full relative bg-[#111]'>
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
