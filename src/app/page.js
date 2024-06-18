@@ -301,7 +301,7 @@ return () => {
             
           </svg>
         </div>
-        <div ref={xlMenu} className="w-auto h-auto flex absolute top-0 left-0 right-0 mx-auto items-center justify-center">
+        <div ref={xlMenu} className="hidden xl:flex w-auto h-auto absolute top-0 left-0 right-0 mx-auto items-center justify-center">
           <ul className='flex uppercase text-[clamp(8px,1.5vw,20px)]'>
             <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>Home</li>
             <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>About</li>
@@ -312,7 +312,7 @@ return () => {
         </div>
         
         </div>
-        <div ref={menuContainer} onMouseOver={handleMenuHover} onClick={handleMenuClick} onMouseLeave={handleMenuLeave} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} xl:hidden fixed top-0 right-0 w-auto h-[auto] z-[50]`}>
+        <div ref={menuContainer} onMouseOver={handleMenuHover} onClick={handleMenuClick} onMouseLeave={handleMenuLeave} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} xl:hidden xl:translate-x-[150px] fixed top-0 right-0 w-auto h-[auto] z-[50]`}>
         <div ref={menuBtn} className='menu m-[1.5rem] 2xl:m-[2.75rem] absolute top-0 right-0 z-[51]' >
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />

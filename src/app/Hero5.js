@@ -16,10 +16,12 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    const isIOS = /iphone|ipad|ipod/.test(userAgent);
+    console.log('User Agent:', userAgent); // Debugging purpose to check user agent string
+
+    const isIOS = /iphone|ipad|ipod|ios/.test(userAgent);
 
     if (isIOS) {
-      setShouldRenderHeroVideo(false); // Disable rendering on iOS devices
+      setShouldRenderYoyoVideo(false); // Disable rendering on iOS devices
     }
   }, []);
 
