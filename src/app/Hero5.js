@@ -84,7 +84,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
     const svgPaths = svgRef.current.querySelectorAll('path');
     gsap.to(svgPaths, {
       y: (index, target) => {
-        return target.getAttribute('class').includes('translate-y-[-100%]') ? '-150%' : '150%';
+        return target.getAttribute('class').includes('translate-y-[-100%]') ? '-150%' : target.getAttribute('class').includes('translate-y-[100%]') ? '150%' : '';
       },
       x: (index, target) => {
         return target.getAttribute('class').includes('translate-x-[-50%]') ? '-250%' : '0';
@@ -95,9 +95,8 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'bottom 50%',
-        end: 'bottom top',
         scrub: false,
-        toggleActions: 'play reverse play reverse',
+        toggleActions: 'play none reverse reverse',
       },
     });
   };

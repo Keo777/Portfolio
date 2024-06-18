@@ -134,8 +134,8 @@ export default function Home() {
         x: "-5%",
         opacity: 0.0,
         scrollTrigger: {
-          trigger: avatar2.current,
-          start: "top 11%", // start when the top of the element hits the bottom of the viewport
+          trigger: avatar.current,
+          start: "top 9%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
@@ -145,8 +145,8 @@ export default function Home() {
         x: "-20%",
         opacity: 0.0,
         scrollTrigger: {
-          trigger: avatar3.current,
-          start: "top 13%",
+          trigger: avatar.current,
+          start: "top 9%",
           end: "bottom 20%",
           scrub: true,
         },
@@ -156,8 +156,8 @@ export default function Home() {
         x: "-35%",
         opacity: 0,
         scrollTrigger: {
-          trigger: avatar4.current,
-          start: "top 15%",
+          trigger: avatar.current,
+          start: "top 9%",
           end: "bottom 20%",
           scrub: true,
         },
@@ -167,8 +167,8 @@ export default function Home() {
         x: "-50%",
         opacity: 0,
         scrollTrigger: {
-          trigger: avatar4.current,
-          start: "top 17%",
+          trigger: avatar.current,
+          start: "top 9%",
           end: "bottom 20%",
           scrub: true,
         },
@@ -302,7 +302,7 @@ return () => {
           </svg>
         </div>
         <div ref={xlMenu} className="w-auto h-auto flex absolute top-0 left-0 right-0 mx-auto items-center justify-center">
-          <ul className='flex uppercase text-[clamp(8px,1.5vw,25px)]'>
+          <ul className='flex uppercase text-[clamp(8px,1.5vw,20px)]'>
             <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>Home</li>
             <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>About</li>
             <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>Services</li>
@@ -354,11 +354,11 @@ return () => {
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
       <div className='hidden md:inline-block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[5]'></div>
        <div className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
-      <Image alt="avatarimg" ref={avatar} id="avatar" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='translate-x-[60%] opacity-0 w-[80%] max-w-[600px] md:max-w-[650px]  xl:max-w-[730px] 2xl:max-w-[850px] absolute bottom-[0%] 2xl:bottom-[0%] top-0 right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[4]' />
-      <Image alt="avatarimg" ref={avatar2} id="avatar2" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[77%] max-w-[560px] md:max-w-[610px]  xl:max-w-[690px] 2xl:max-w-[810px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-1%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[3]' />
-      <Image alt="avatarimg" ref={avatar3} id="avatar3" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[74%] max-w-[520px] md:max-w-[570px]  xl:max-w-[650px] 2xl:max-w-[770px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-2%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[2]' />
-      <Image alt="avatarimg" ref={avatar4} id="avatar4" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[71%] max-w-[480px] md:max-w-[530px]  xl:max-w-[610px] 2xl:max-w-[730px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-3%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
-      <Image alt="avatarimg" ref={avatar5} id="avatar5" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[68%] max-w-[440px] md:max-w-[490px]  xl:max-w-[570px] 2xl:max-w-[690px] absolute bottom-[0%] 2xl:bottom-[0%] top-[-4%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
+      <Image alt="avatarimg" ref={avatar} id="avatar" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='translate-x-[60%] opacity-0 w-[clamp(30rem,48vw,47rem)] absolute bottom-[0%] 2xl:bottom-[0%] top-0 right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[4]' />
+      <Image alt="avatarimg" ref={avatar2} id="avatar2" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[clamp(30rem,48vw,47rem)] scale-[95%] absolute bottom-[0%] 2xl:bottom-[0%] top-[-1%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[3]' />
+      <Image alt="avatarimg" ref={avatar3} id="avatar3" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[clamp(30rem,48vw,47rem)] scale-[89%] absolute bottom-[0%] 2xl:bottom-[0%] top-[-2%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[2]' />
+      <Image alt="avatarimg" ref={avatar4} id="avatar4" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[clamp(30rem,48vw,47rem)] scale-[83%] absolute bottom-[0%] 2xl:bottom-[0%] top-[-3%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
+      <Image alt="avatarimg" ref={avatar5} id="avatar5" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[clamp(30rem,48vw,47rem)] scale-[76%] absolute bottom-[0%] 2xl:bottom-[0%] top-[-4%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
       
       
         <DynamicHero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
