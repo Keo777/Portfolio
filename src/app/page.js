@@ -59,6 +59,7 @@ export default function Home() {
   useEffect(() => {
     const animateIntro = async () => {
      
+      if (hologramRef.current && hologramRef.current.avatars && hologramRef.current.avatars[0]) {
       const tl = gsap.timeline({defaults: {ease: 'power4.inOut'},  });
       gsap.set(hologramRef.current.avatars[0].current, {
         x: '60%',
@@ -113,7 +114,8 @@ export default function Home() {
           duration: 2,
         }, "-=2.5")
 
-    }
+    };
+  };
 
     const setupScrollAnimations = () => {
 
