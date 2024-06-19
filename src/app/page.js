@@ -299,10 +299,11 @@ export default function Home() {
         </div>
         </div>
   
-      <nav ref={menu} className='translate-x-[100%] navmenu fixed bg-[#333] h-[100vh] w-full md:w-auto right-0 text-white z-[49]'>
+      <nav ref={menu} className='translate-x-[100%] navmenu fixed bg-[#111] h-[100vh] w-full md:w-auto right-0 text-white z-[49]'>
         <div className='body p-[100px] xl:pr-[200px] 2xl:pr-[400px] flex justify-center md:justify-between'>
-          <div className='nav flex flex-col text-[56px] uppercase gap-[12px] mt-[80px]'>
+          <div className='nav flex flex-col text-[56px] font-[monument] uppercase gap-[12px] mt-[80px]'>
             <div className='header'>
+              <p className='text-[20px] border-b-[1px] mb-[50px]'>Navigation</p>
               <ul>
                 <li>Home</li>
                 <li>About</li>
