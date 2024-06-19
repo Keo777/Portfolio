@@ -21,7 +21,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
     const isIOS = /iphone|ipad|ipod|ios/.test(userAgent);
 
     if (isIOS) {
-      setShouldRenderYoyoVideo(false); // Disable rendering on iOS devices
+      setShouldRenderHeroVideo(false); // Disable rendering on iOS devices
     }
   }, []);
 
