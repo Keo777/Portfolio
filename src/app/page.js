@@ -19,7 +19,7 @@ export default function Home() {
   const nav = useRef(null);
   const xlMenu = useRef(null);
   const svgRef = useRef(null);
-  const hologramRef = useRef();
+  const hologramRef = useRef([]);
   const tint = useRef(null);
   const [activeVideo, setActiveVideo] = useState(3);
   const menuContainer = useRef(null);
@@ -59,46 +59,42 @@ export default function Home() {
   useEffect(() => {
     const animateIntro = async () => {
      
-      if (hologramRef.current && hologramRef.current.avatars && hologramRef.current.avatars[0] && hologramRef.current.avatars[1] && hologramRef.current.avatars[2] && hologramRef.current.avatars[3] && hologramRef.current.avatars[4]) {
       const tl = gsap.timeline({defaults: {ease: 'power4.inOut'},  });
-      gsap.set(hologramRef.current.avatars[0].current, {
-        x: '60%',
-      });
 
       tl
-        .to(hologramRef.current.avatars[0].current, {
+        .to(hologramRef.current[0].current, {
           y: 0,
           x: 0,
           duration: 1.5,
           delay: 0.5,
         })
-        .to(hologramRef.current.avatars[0].current, {
+        .to(hologramRef.current[0].current, {
           opacity: 1,
           duration: 2,
         }, "<")
-        .to(hologramRef.current.avatars[0].current, {
+        .to(hologramRef.current[0].current, {
           x: "4%",
           opacity: 0.75,
           duration: 4,
         }, "-=.5")
-        .to(hologramRef.current.avatars[1].current, {
+        .to(avatar2.current, {
           x: "0%",
           opacity: 0.40,
           duration: 4,
         }, "<")
         
-        .to(hologramRef.current.avatars[2].current, {
+        .to(avatar3.current, {
           x: "-5%",
           opacity: 0.20,
           duration: 4,
         }, "-=4")
-        .to(hologramRef.current.avatars[3].current, {
+        .to(avatar4.current, {
           x: "-10%",
           opacity: 0.1,
           duration: 4,
           
         }, "-=4")
-        .to(hologramRef.current.avatars[4].current, {
+        .to(avatar5.current, {
           x: "-15%",
           opacity: 0.05,
           duration: 4,
@@ -114,62 +110,61 @@ export default function Home() {
           duration: 2,
         }, "-=2.5")
 
-    };
-  };
+    }
 
     const setupScrollAnimations = () => {
 
 
       // Adding ScrollTrigger animation for avatar2, avatar3, and avatar4
-      gsap.to(hologramRef.current.avatars[0].current, {
+      gsap.to(hologramRef.current[0].current, {
         x: "10%",
         opacity: 0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
+          trigger: hologramRef.current[0].current,
           start: "top 9%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
       });
 
-      gsap.to(hologramRef.current.avatars[1].current, {
+      gsap.to(avatar2.current, {
         x: "-5%",
         opacity: 0.0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
+          trigger: hologramRef.current[0].current,
           start: "top 9%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
       });
 
-      gsap.to(hologramRef.current.avatars[2].current, {
+      gsap.to(avatar3.current, {
         x: "-20%",
         opacity: 0.0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
+          trigger: hologramRef.current[0].current,
           start: "top 9%",
           end: "bottom 20%",
           scrub: true,
         },
       });
 
-      gsap.to(hologramRef.current.avatars[3].current, {
+      gsap.to(avatar4.current, {
         x: "-35%",
         opacity: 0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
+          trigger: hologramRef.current[0].current,
           start: "top 9%",
           end: "bottom 20%",
           scrub: true,
         },
       });
 
-      gsap.to(hologramRef.current.avatars[4].current, {
+      gsap.to(avatar5.current, {
         x: "-50%",
         opacity: 0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
+          trigger: hologramRef.current[0].current,
           start: "top 9%",
           end: "bottom 20%",
           scrub: true,
@@ -222,7 +217,7 @@ export default function Home() {
 
     
 
-  }, [hologramRef]);
+  }, []);
 
     // Colors corresponding to each video index
     const colors = {
@@ -308,7 +303,7 @@ export default function Home() {
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
       <div className='hidden md:inline-block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[5]'></div>
        <div className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
-       <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-59.webp'} translateX={'0%'} opacity={0} width={1400} height={1473} />
+       <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-59.webp'} translateX={'0%'} opacity={1} width={1400} height={1473} />
       
         <DynamicHero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
         
