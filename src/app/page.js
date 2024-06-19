@@ -59,7 +59,7 @@ export default function Home() {
   useEffect(() => {
     const animateIntro = async () => {
      
-      if (hologramRef.current && hologramRef.current.avatars && hologramRef.current.avatars[0]) {
+      if (hologramRef.current && hologramRef.current.avatars && hologramRef.current.avatars[0] && hologramRef.current.avatars[1] && hologramRef.current.avatars[2] && hologramRef.current.avatars[3] && hologramRef.current.avatars[4]) {
       const tl = gsap.timeline({defaults: {ease: 'power4.inOut'},  });
       gsap.set(hologramRef.current.avatars[0].current, {
         x: '60%',
