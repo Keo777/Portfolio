@@ -13,7 +13,7 @@ const HologramImg = forwardRef(({ numImages, src, translateX, opacity, width, he
 
   useImperativeHandle(ref, () => ({
     avatars: avatarRefs.current,
-  }));
+  }), [avatarRefs]);
 
   const avatars = Array.from({ length: numImages }, (_, index) => ({
     scale: 1 - index * 0.06,
