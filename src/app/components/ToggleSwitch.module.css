@@ -1,12 +1,12 @@
 /* components/ToggleSwitch.module.css */
 
 .menucontainer {
-  filter: drop-shadow( 1px 1px 2px rgba(0,0,0,0.25));
+  
 }
 
 @media (min-width: 1450px) {
   .menucontaineractive {
-    filter: drop-shadow( -35px 0px 15px rgba(0,0,0,0.5));
+    
   }
   
 }
@@ -19,14 +19,14 @@
     display: none;
   }
   .toggle input + div {
-    width: 20px;
-    height: 14px;
+    width: 50px;
+    height: 17px;
     position: relative;
   }
 
   @media (min-width: 1450px) {
     .toggle input + div {
-      width: 35px;
+      width: 80px;
       height: 20px;
     }
     
@@ -63,10 +63,10 @@
   .toggle input + div div span:after {
     content: "";
     display: block;
-    width: 47%;
+    width: 45%;
     height: 2px;
     border-radius: 1px;
-    background: #000;
+    background: #fff;
     position: absolute;
     -webkit-backface-visibility: hidden;
     transition: transform 0.5s ease, border-radius 0.3s ease, background 0.4s ease;
@@ -75,8 +75,7 @@
   @media (min-width: 1450px) {
     .toggle input + div div span:before,
   .toggle input + div div span:after {
-    width: 55%;
-    height: 4px;
+    height: 2px;
   }
   }
 
@@ -93,7 +92,7 @@
   .toggle input + div svg {
     display: block;
     fill: none;
-    stroke: #000;
+    stroke: #fff;
     stroke-width: 2px;
     width: 44px;
     height: 44px;
@@ -102,7 +101,7 @@
     left: 50%;
     top: 50%;
     margin: -22px 0 0 -22px;
-    stroke-dasharray: 0 82.801 8 82.801;
+    stroke-dasharray: 0 82.801 15 82.801;
     stroke-dashoffset: 82.801;
     transform-origin: 50% 50%;
     -webkit-backface-visibility: hidden;
@@ -112,6 +111,7 @@
 
   @media (min-width: 1450px) {
     .toggle input + div svg {
+      stroke-width: 1px;
       width: 80px;
       height: 80px;
       margin: -40px 0 0 -40px;
@@ -129,30 +129,30 @@
     background: #fff;
   }
   .toggle input.active + div div span:first-child:before {
-    transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
+    transform: rotate(45deg) translate(12px, -12.5px) scaleX(0.49);
   }
   .toggle input.active + div div span:first-child:after {
-    transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
+    transform: rotate(-45deg) translate(-12px, -12.5px) scaleX(0.49);
   }
   .toggle input.active + div div span:last-child:before {
-    transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
+    transform: rotate(-45deg) translate(12px, 12.5px) scaleX(0.49);
   }
   .toggle input.active + div div span:last-child:after {
-    transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
+    transform: rotate(45deg) translate(-12px, 12.5px) scaleX(0.49);
   }
 
   @media (min-width: 1450px) {
     .toggle input.active + div div span:first-child:before {
-      transform: rotate(45deg) translate(2.2px, -7px) scaleX(1.75);
+      transform: rotate(45deg) translate(17px, -22px) scaleX(0.5);
     }
     .toggle input.active + div div span:first-child:after {
-      transform: rotate(-45deg) translate(-2.2px, -7px) scaleX(1.75);
+      transform: rotate(-45deg) translate(-17px, -22px) scaleX(0.5);
     }
     .toggle input.active + div div span:last-child:before {
-      transform: rotate(-45deg) translate(2.2px, 7px) scaleX(1.75);
+      transform: rotate(-45deg) translate(17px, 22px) scaleX(0.5);
     }
     .toggle input.active + div div span:last-child:after {
-      transform: rotate(45deg) translate(-2.2px, 7px) scaleX(1.75);
+      transform: rotate(45deg) translate(-17px, 22px) scaleX(0.5);
     }
   }
 
@@ -166,6 +166,9 @@
     transform: rotate(270deg);
   }
 
+  .nav {
+    
+  }
   
 
   .nav ul {
@@ -182,11 +185,12 @@
   content: "";
   width: 100vw;
   height: 100vh;
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0);
   transition: all 500ms ease-in-out;
   clip-path: circle(1.4rem at calc(100% - 2.15rem) 1.9rem);
   z-index: 25;
   }
+
   
   .nav.active:before {
   clip-path: circle(100%);

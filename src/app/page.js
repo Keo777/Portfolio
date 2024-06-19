@@ -238,6 +238,26 @@ export default function Home() {
       }
     }, [activeVideo]);
 
+    useEffect(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power4.inOut' } });
+    
+      if (menuActive) {
+        // Animate menu to translateX(0) when menuActive is true
+        tl.to(menu.current, {
+          translateX: 0,
+          duration: 1.5,
+          ease: 'power4.inOut'
+        });
+      } else {
+        // Animate menu to translateX(100%) when menuActive is false
+        tl.to(menu.current, {
+          translateX: '100%',
+          duration: 1.5,
+          ease: 'power4.inOut'
+        });
+      }
+    }, [menuActive]);
+
   return (
     <main id="main" className='bg-[#fff] overflow-hidden'>
       <div ref={nav} className='translate-y-[-100%] flex header w-[100%] h-[clamp(50px,5vw,100px)] fixed z-[20] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
@@ -266,7 +286,7 @@ export default function Home() {
         </div>
         
         </div>
-        <div ref={menuContainer} onMouseOver={handleMenuHover} onClick={handleMenuClick} onMouseLeave={handleMenuLeave} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} xl:hidden xl:translate-x-[150px] fixed top-0 right-0 w-auto h-[auto] z-[50]`}>
+        <div ref={menuContainer} onClick={handleMenuClick} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} xl:hidden xl:translate-x-[150px] fixed top-0 right-0 z-[50] mix-blend-difference`}>
         <div ref={menuBtn} className='menu m-[1.5rem] 2xl:m-[2.75rem] absolute top-0 right-0 z-[51]' >
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
@@ -290,16 +310,24 @@ export default function Home() {
         </symbol>
       </svg>
         </div>
+        </div>
   
-      <nav ref={menu} className={`${menuActive && `${styles.active}`} ${styles.nav}`}>
-        <ul>
-          <li>element one</li>
-          <li>element two</li>
-          <li>element three</li>
-          <li>element four</li>
-        </ul>
+      <nav ref={menu} className='translate-x-[100%] navmenu fixed bg-[#333] h-[100vh] w-full md:w-auto right-0 text-white'>
+        <div className='body p-[100px] xl:pr-[200px] 2xl:pr-[400px] flex justify-center md:justify-between'>
+          <div className='nav flex flex-col text-[56px] uppercase gap-[12px] mt-[80px]'>
+            <div className='header'>
+              <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Services</li>
+                <li>Work</li>
+                <li>Contact</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </nav>
-      </div>
+      
       
       
       <div ref={section1} id="section1" className='h-[calc(100vh-60px)] md:h-screen w-full relative bg-[#111]'>
