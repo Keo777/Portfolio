@@ -222,7 +222,7 @@ export default function Home() {
 
     
 
-  }, []);
+  }, [hologramRef]);
 
     // Colors corresponding to each video index
     const colors = {
