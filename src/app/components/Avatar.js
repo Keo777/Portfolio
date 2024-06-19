@@ -56,7 +56,7 @@ const Avatar = forwardRef(({ src, translateX, scale, opacity, zIndex, bottom, to
       src={src}
       height={height}
       width={width}
-      className={`opacity-${opacity} w-[clamp(500px,48vw,1000px)] absolute bottom-${bottom} top-${top} right-${right} left-${left} xl:right-[-40%] 2xl:right-[-30%] m-auto z-[${zIndex}] `}
+      className={`opacity-${opacity} w-[clamp(500px,48vw,800px)] absolute bottom-${bottom} top-${top} right-${right} left-${left} xl:right-[-40%] 2xl:right-[-30%] m-auto z-[${zIndex}] `}
       style={{ transform: `translateX(${translateX}) scale(${scale})` }}
     />
   );
