@@ -59,7 +59,7 @@ export default function Home() {
   useEffect(() => {
     const animateIntro = async () => {
      
-      if (hologramRef.current && hologramRef.current.avatars && hologramRef.current.avatars[0] && hologramRef.current.avatars[1] && hologramRef.current.avatars[2] && hologramRef.current.avatars[3] && hologramRef.current.avatars[4]) {
+      
       const tl = gsap.timeline({defaults: {ease: 'power4.inOut'},  });
       gsap.set(hologramRef.current.avatars[0].current, {
         x: '60%',
@@ -115,7 +115,7 @@ export default function Home() {
         }, "-=2.5")
 
     };
-  };
+  
 
     const setupScrollAnimations = () => {
 
@@ -125,8 +125,8 @@ export default function Home() {
         x: "10%",
         opacity: 0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
-          start: "top 9%", // start when the top of the element hits the bottom of the viewport
+          trigger: section1.current,
+          start: "bottom 75%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
@@ -136,8 +136,8 @@ export default function Home() {
         x: "-5%",
         opacity: 0.0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
-          start: "top 9%", // start when the top of the element hits the bottom of the viewport
+          trigger: section1.current,
+          start: "bottom 75%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
@@ -147,8 +147,8 @@ export default function Home() {
         x: "-20%",
         opacity: 0.0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
-          start: "top 9%",
+          trigger: section1.current,
+          start: "bottom 75%",
           end: "bottom 20%",
           scrub: true,
         },
@@ -158,8 +158,8 @@ export default function Home() {
         x: "-35%",
         opacity: 0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
-          start: "top 9%",
+          trigger: section1.current,
+          start: "bottom 75%",
           end: "bottom 20%",
           scrub: true,
         },
@@ -169,8 +169,8 @@ export default function Home() {
         x: "-50%",
         opacity: 0,
         scrollTrigger: {
-          trigger: hologramRef.current.avatars[0].current,
-          start: "top 9%",
+          trigger: section1.current,
+          start: "bottom 75%",
           end: "bottom 20%",
           scrub: true,
         },
@@ -222,7 +222,7 @@ export default function Home() {
 
     
 
-  }, [hologramRef]);
+  }, []);
 
     // Colors corresponding to each video index
     const colors = {

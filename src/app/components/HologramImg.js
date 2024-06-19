@@ -34,12 +34,12 @@ const HologramImg = forwardRef(({ numImages, src, translateX, opacity, width, he
           scale={avatar.scale}
           opacity={opacity}
           zIndex={avatar.zIndex}
-          bottom="0"
-          top="0"
+          bottom={0}
+          top={0}
           width={width}
           height={height}
-          right="0"
-          left="0"
+          right={0}
+          left={0}
           xlRight="-40%"
           xxlRight="-30%"
         />
