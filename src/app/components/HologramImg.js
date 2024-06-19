@@ -1,13 +1,53 @@
-import Image from "next/image"
+import Avatar from "./Avatar";
+import { useRef, createRef, forwardRef, useImperativeHandle } from "react";
 
-const const scale1 = {100 * 0.}
+const HologramImg = forwardRef(({ numImages, src, translateX, opacity, width, height }, ref) => {
+    const avatarRefs = useRef([]);
 
-export default function Home() {
+   // Initialize refs if not already done
+   if (avatarRefs.current.length !== numImages) {
+    avatarRefs.current = Array(numImages)
+      .fill()
+      .map((_, i) => avatarRefs.current[i] || createRef());
+  }
 
-    return (
-        <>
-        <Image alt="avatarimg" ref={avatar} id="avatar" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='translate-x-[60%] opacity-0 w-[clamp(30rem,48vw,47rem)] absolute bottom-[0%] 2xl:bottom-[0%] top-0 right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[4]' />
-        </>
-    )
+  useImperativeHandle(ref, () => ({
+    avatars: avatarRefs.current,
+  }));
 
-}
+  const avatars = Array.from({ length: numImages }, (_, index) => ({
+    scale: 1 - index * 0.06,
+    top: `${index}%`,
+    zIndex: numImages - index,
+  }));
+
+  return (
+    <>
+      {avatars.map((avatar, index) => (
+        <Avatar
+          key={index}
+          index={index}
+          total={numImages}
+          ref={avatarRefs.current[index]}
+          src={src}
+          translateX={translateX}
+          scale={avatar.scale}
+          opacity={opacity}
+          zIndex={avatar.zIndex}
+          bottom="0"
+          top="0"
+          width={width}
+          height={height}
+          right="0"
+          left="0"
+          xlRight="-40%"
+          xxlRight="-30%"
+        />
+      ))}
+    </>
+  );
+});
+
+HologramImg.displayName = "HologramImg"; // Required for forwardRef components
+
+export default HologramImg;

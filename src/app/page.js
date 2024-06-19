@@ -6,6 +6,7 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import BgLines1 from "./bglines";
 import dynamic from 'next/dynamic';
 import styles from './components/ToggleSwitch.module.css';
+import HologramImg from "./components/HologramImg";
 
 const DynamicHero5 = dynamic(() => import('./Hero5'), { ssr: false });
 
@@ -15,14 +16,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const section1 = useRef(null);
-  const avatar = useRef(null);
-  const avatar2 = useRef(null);
-  const avatar3 = useRef(null);
-  const avatar4 = useRef(null);
-  const avatar5 = useRef(null);
   const nav = useRef(null);
   const xlMenu = useRef(null);
   const svgRef = useRef(null);
+  const hologramRef = useRef();
   const tint = useRef(null);
   const [activeVideo, setActiveVideo] = useState(3);
   const menuContainer = useRef(null);
@@ -63,41 +60,44 @@ export default function Home() {
     const animateIntro = async () => {
      
       const tl = gsap.timeline({defaults: {ease: 'power4.inOut'},  });
+      gsap.set(hologramRef.current.avatars[0].current, {
+        x: '60%',
+      });
 
       tl
-        .to(avatar.current, {
+        .to(hologramRef.current.avatars[0].current, {
           y: 0,
           x: 0,
           duration: 1.5,
           delay: 0.5,
         })
-        .to(avatar.current, {
+        .to(hologramRef.current.avatars[0].current, {
           opacity: 1,
           duration: 2,
         }, "<")
-        .to(avatar.current, {
+        .to(hologramRef.current.avatars[0].current, {
           x: "4%",
           opacity: 0.75,
           duration: 4,
         }, "-=.5")
-        .to(avatar2.current, {
+        .to(hologramRef.current.avatars[1].current, {
           x: "0%",
           opacity: 0.40,
           duration: 4,
         }, "<")
         
-        .to(avatar3.current, {
+        .to(hologramRef.current.avatars[2].current, {
           x: "-5%",
           opacity: 0.20,
           duration: 4,
         }, "-=4")
-        .to(avatar4.current, {
+        .to(hologramRef.current.avatars[3].current, {
           x: "-10%",
           opacity: 0.1,
           duration: 4,
           
         }, "-=4")
-        .to(avatar5.current, {
+        .to(hologramRef.current.avatars[4].current, {
           x: "-15%",
           opacity: 0.05,
           duration: 4,
@@ -119,55 +119,55 @@ export default function Home() {
 
 
       // Adding ScrollTrigger animation for avatar2, avatar3, and avatar4
-      gsap.to(avatar.current, {
+      gsap.to(hologramRef.current.avatars[0].current, {
         x: "10%",
         opacity: 0,
         scrollTrigger: {
-          trigger: avatar.current,
+          trigger: hologramRef.current.avatars[0].current,
           start: "top 9%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
       });
 
-      gsap.to(avatar2.current, {
+      gsap.to(hologramRef.current.avatars[1].current, {
         x: "-5%",
         opacity: 0.0,
         scrollTrigger: {
-          trigger: avatar.current,
+          trigger: hologramRef.current.avatars[0].current,
           start: "top 9%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
       });
 
-      gsap.to(avatar3.current, {
+      gsap.to(hologramRef.current.avatars[2].current, {
         x: "-20%",
         opacity: 0.0,
         scrollTrigger: {
-          trigger: avatar.current,
+          trigger: hologramRef.current.avatars[0].current,
           start: "top 9%",
           end: "bottom 20%",
           scrub: true,
         },
       });
 
-      gsap.to(avatar4.current, {
+      gsap.to(hologramRef.current.avatars[3].current, {
         x: "-35%",
         opacity: 0,
         scrollTrigger: {
-          trigger: avatar.current,
+          trigger: hologramRef.current.avatars[0].current,
           start: "top 9%",
           end: "bottom 20%",
           scrub: true,
         },
       });
 
-      gsap.to(avatar5.current, {
+      gsap.to(hologramRef.current.avatars[4].current, {
         x: "-50%",
         opacity: 0,
         scrollTrigger: {
-          trigger: avatar.current,
+          trigger: hologramRef.current.avatars[0].current,
           start: "top 9%",
           end: "bottom 20%",
           scrub: true,
@@ -218,55 +218,7 @@ export default function Home() {
 
     animateIntro();
 
-     // Mouse movement effect for 3D tilt
-const maxRotate = 10; // Maximum rotation in degrees
-
-const handleMouseMove = (e) => {
-  const centerX = window.innerWidth / 2;
-  const centerY = window.innerHeight / 2;
-  const mouseX = e.clientX;
-  const mouseY = e.clientY;
-  const deltaX = centerX - mouseX;
-  const deltaY = centerY - mouseY;
-  const rotateX = Math.max(-maxRotate, Math.min(maxRotate, deltaY * 0.08)); // Clamp rotationX
-  const rotateY = Math.max(-maxRotate, Math.min(maxRotate, deltaX * 0.08)); // Clamp rotationY
-
-  animateAvatars(rotateX, rotateY);
-};
-
-const handleDeviceOrientation = (e) => {
-  const rotateX = Math.max(-maxRotate, Math.min(maxRotate, e.beta * 0.08)); // Clamp rotationX from beta
-  const rotateY = Math.max(-maxRotate, Math.min(maxRotate, e.gamma * 0.08)); // Clamp rotationY from gamma
-
-  animateAvatars(rotateX, rotateY);
-};
-
-const animateAvatars = (rotateX, rotateY) => {
-  const avatars = [avatar.current, avatar2.current, avatar3.current, avatar4.current, avatar5.current];
-  
-  avatars.forEach((avatar, index) => {
-    const scale = (index + 1) / avatars.length; // Scale factor from 0.2 to 1
-    const scaledRotateX = rotateX * scale;
-    const scaledRotateY = rotateY * scale;
-
-    gsap.to(avatar, {
-      rotationX: scaledRotateX,
-      rotationY: -scaledRotateY,
-      delay: 0.1 * index,
-      transformPerspective: 500,
-      ease: "power2.out",
-      duration: 2,
-    });
-  });
-};
-
-window.addEventListener("mousemove", handleMouseMove);
-window.addEventListener("deviceorientation", handleDeviceOrientation);
-
-return () => {
-  window.removeEventListener("mousemove", handleMouseMove);
-  window.removeEventListener("deviceorientation", handleDeviceOrientation);
-};
+    
 
   }, []);
 
@@ -354,12 +306,7 @@ return () => {
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
       <div className='hidden md:inline-block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[5]'></div>
        <div className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
-      <Image alt="avatarimg" ref={avatar} id="avatar" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='translate-x-[60%] opacity-0 w-[clamp(30rem,48vw,47rem)] absolute bottom-[0%] 2xl:bottom-[0%] top-0 right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[4]' />
-      <Image alt="avatarimg" ref={avatar2} id="avatar2" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[clamp(30rem,48vw,47rem)] scale-[95%] absolute bottom-[0%] 2xl:bottom-[0%] top-[-1%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[3]' />
-      <Image alt="avatarimg" ref={avatar3} id="avatar3" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[clamp(30rem,48vw,47rem)] scale-[89%] absolute bottom-[0%] 2xl:bottom-[0%] top-[-2%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[2]' />
-      <Image alt="avatarimg" ref={avatar4} id="avatar4" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[clamp(30rem,48vw,47rem)] scale-[83%] absolute bottom-[0%] 2xl:bottom-[0%] top-[-3%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
-      <Image alt="avatarimg" ref={avatar5} id="avatar5" src={'/images/keoniis-59.webp'} height={1473} width={1400} className='opacity-0 w-[clamp(30rem,48vw,47rem)] scale-[76%] absolute bottom-[0%] 2xl:bottom-[0%] top-[-4%] right-0 xl:right-[-40%] 2xl:right-[-30%]  left-[0] m-auto z-[1]' />
-      
+       <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-59.webp'} translateX={'0%'} opacity={0} width={1400} height={1473} />
       
         <DynamicHero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
         
