@@ -68,7 +68,7 @@ const HeroVideo = ({ activeVideo }) => {
         playsInline
         className="blurred w-[100%] h-[100%] absolute bottom-[0%] left-0 object-cover"
       >
-        <source src="/images/bg11.mp4" type="video/mp4" />
+        <source src="/images/bg11.webm" type="video/webm" />
       </video>
     </div>
   );

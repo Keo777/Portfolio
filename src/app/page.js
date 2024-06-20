@@ -19,13 +19,14 @@ export default function Home() {
   const nav = useRef(null);
   const xlMenu = useRef(null);
   const svgRef = useRef(null);
-  const hologramRef = useRef();
+  const hologramRef = useRef(null);
   const tint = useRef(null);
   const [activeVideo, setActiveVideo] = useState(3);
   const menuContainer = useRef(null);
   const menuBtn = useRef(null);
   const menu = useRef(null);
   const [menuActive, setMenuActive] = useState(false);
+  
 
   const handleMenuHover = (e) => {
     if (!menuActive) {
@@ -77,8 +78,8 @@ export default function Home() {
           duration: 2,
         }, "<")
         .to(hologramRef.current.avatars[0].current, {
-          x: "4%",
-          opacity: 0.75,
+          x: "-4%",
+          opacity: 0.5,
           duration: 4,
         }, "-=.5")
         .to(hologramRef.current.avatars[1].current, {
@@ -88,18 +89,18 @@ export default function Home() {
         }, "<")
         
         .to(hologramRef.current.avatars[2].current, {
-          x: "-5%",
+          x: "4%",
           opacity: 0.20,
           duration: 4,
         }, "-=4")
         .to(hologramRef.current.avatars[3].current, {
-          x: "-10%",
+          x: "8%",
           opacity: 0.1,
           duration: 4,
           
         }, "-=4")
         .to(hologramRef.current.avatars[4].current, {
-          x: "-15%",
+          x: "12%",
           opacity: 0.05,
           duration: 4,
           onComplete: setupScrollAnimations,
@@ -113,7 +114,7 @@ export default function Home() {
           x: 0,
           duration: 1,
           ease: 'power4.inOut',
-        });
+        }, "<");
 
     };
   
@@ -123,55 +124,55 @@ export default function Home() {
 
       // Adding ScrollTrigger animation for avatar2, avatar3, and avatar4
       gsap.to(hologramRef.current.avatars[0].current, {
-        x: "10%",
+        x: "-20%",
         opacity: 0,
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 75%", // start when the top of the element hits the bottom of the viewport
+          start: "bottom 90%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
       });
 
       gsap.to(hologramRef.current.avatars[1].current, {
-        x: "-5%",
+        x: "0%",
         opacity: 0.0,
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 75%", // start when the top of the element hits the bottom of the viewport
+          start: "bottom 90%", // start when the top of the element hits the bottom of the viewport
           end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
       });
 
       gsap.to(hologramRef.current.avatars[2].current, {
-        x: "-20%",
+        x: "20%",
         opacity: 0.0,
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 75%",
+          start: "bottom 90%",
           end: "bottom 20%",
           scrub: true,
         },
       });
 
       gsap.to(hologramRef.current.avatars[3].current, {
-        x: "-35%",
+        x: "40%",
         opacity: 0,
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 75%",
+          start: "bottom 90%",
           end: "bottom 20%",
           scrub: true,
         },
       });
 
       gsap.to(hologramRef.current.avatars[4].current, {
-        x: "-50%",
+        x: "60%",
         opacity: 0,
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 75%",
+          start: "bottom 90%",
           end: "bottom 20%",
           scrub: true,
         },
@@ -232,23 +233,83 @@ export default function Home() {
         // Animate menu to translateX(0) when menuActive is true
         tl.to(menu.current, {
           translateX: 0,
-          duration: 1.5,
+          duration: 1,
           ease: 'power4.inOut'
         });
       } else {
         // Animate menu to translateX(100%) when menuActive is false
         tl.to(menu.current, {
           translateX: '100%',
-          duration: 1.5,
+          duration: 1,
           ease: 'power4.inOut'
         });
       }
     }, [menuActive]);
 
+    useEffect(() => {
+      const avatar1 = hologramRef.current.avatars[0];
+      const avatar2 = hologramRef.current.avatars[1];
+      const avatar3 = hologramRef.current.avatars[2];
+      const avatar4 = hologramRef.current.avatars[3];
+      const avatar5 = hologramRef.current.avatars[4];
+      // Mouse movement effect for 3D tilt
+      const maxRotate = 20; // Maximum rotation in degrees
+
+      const handleMouseMove = (e) => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      const deltaX = centerX - mouseX;
+      const deltaY = centerY - mouseY;
+      const rotateX = Math.max(-maxRotate, Math.min(maxRotate, deltaY * 0.15)); // Clamp rotationX
+      const rotateY = Math.max(-maxRotate, Math.min(maxRotate, deltaX * 0.15)); // Clamp rotationY
+
+      animateAvatars(rotateX, rotateY);
+      };
+
+      const handleDeviceOrientation = (e) => {
+      const rotateX = Math.max(-maxRotate, Math.min(maxRotate, e.beta * 0.15)); // Clamp rotationX from beta
+      const rotateY = Math.max(-maxRotate, Math.min(maxRotate, e.gamma * 0.15)); // Clamp rotationY from gamma
+
+      animateAvatars(rotateX, rotateY);
+      };
+
+      const animateAvatars = (rotateX, rotateY) => {
+      const avatars = [avatar1.current, avatar2.current, avatar3.current, avatar4.current, avatar5.current];
+      
+      avatars.forEach((avatar, index) => {
+      const scale = (index + 0.5) / avatars.length; // Scale factor from 0.2 to 1
+      const scaledRotateX = rotateX * scale;
+      const scaledRotateY = rotateY * scale;
+      
+      gsap.to(avatar, {
+        rotationX: scaledRotateX,
+        rotationY: -scaledRotateY,
+        delay: 0.1 * index,
+        transformPerspective: 800,
+        ease: "power2.out",
+        duration: 1.5,
+      });
+
+    });
+    };
+    
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("deviceorientation", handleDeviceOrientation);
+    
+    return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+    window.removeEventListener("deviceorientation", handleDeviceOrientation);
+    };
+    
+    }, []);
+  
+
   return (
     <main id="main" className='bg-[#fff] overflow-hidden'>
-      <div ref={nav} className='flex header w-[100%] h-[clamp(50px,5vw,100px)] fixed z-[20] top-0 justify-between text-[white] font-[monument] mix-blend-difference'>
-        <div className='logo cursor-pointer m-[clamp(10px,1vw,40px)] w-[auto] uppercase'>
+      <div ref={nav} className='flex header w-[100%] h-[clamp(40px,5vw,65px)] fixed z-[20] top-[1rem] left-[1rem] justify-between text-[white] font-[monument] mix-blend-difference'>
+        <div className='logo cursor-pointer w-[auto] uppercase'>
         <svg id="herologo" ref={svgRef} width="100%" height="100%" viewBox="0 0 532.16 75.54" preserveAspectRatio="xMinYMin meet" className='cursor-pointer'>
             <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m55.73,34.37l44.76,40.57h-26.28l-32.51-30.35-22.69,16.37v13.97H0V1.94h19v37.86L71.67,1.94h28.82l-44.76,32.43Z"/>
             <path className='translate-y-[-100%] cls-1' stroke="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" fill="rgba(255, 255, 255, 1)"  d="m185.6,37.86C185.6,13.64,199.38.38,231.53.38s45.93,13.36,45.93,37.47-13.88,37.68-45.93,37.68-45.93-13.36-45.93-37.68Zm73.07,0c0-14.82-7.52-21.71-27.14-21.71s-27.14,6.79-27.14,21.71,7.62,21.92,27.14,21.92,27.14-6.99,27.14-21.92Z"/>
@@ -274,7 +335,7 @@ export default function Home() {
         
         </div>
         <div ref={menuContainer} onClick={handleMenuClick} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} xl:translate-x-[150px] fixed top-0 right-0 z-[50] mix-blend-difference`}>
-        <div ref={menuBtn} className='menu m-[1.5rem] 2xl:m-[2.5rem] absolute top-0 right-0 z-[51]' >
+        <div ref={menuBtn} className='menu absolute top-[clamp(2.25rem,2.25vw,4rem)] right-[clamp(2rem,3vw,5rem)] z-[51]' >
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
         <div>
@@ -299,9 +360,9 @@ export default function Home() {
         </div>
         </div>
   
-      <nav ref={menu} className='translate-x-[100%] navmenu fixed bg-[#111] h-[100vh] w-full md:w-auto right-0 text-white z-[49]'>
-        <div className='body p-[100px] xl:pr-[200px] 2xl:pr-[400px] flex justify-center md:justify-between'>
-          <div className='nav flex flex-col text-[56px] font-[monument] uppercase gap-[12px] mt-[80px]'>
+      <nav ref={menu} className='translate-x-[100%] navmenu fixed bg-[#111] border-l-[1px] border-[#ffffff41] h-[100vh] w-full md:w-auto right-0 text-white z-[49]'>
+        <div className='body p-[100px] xl:pr-[200px] 3xl:pr-[300px] flex justify-center md:justify-between'>
+          <div className='nav flex flex-col text-[clamp(2rem,2.5vw,4rem)] font-[monument] uppercase gap-[12px] leading-[clamp(2.5rem,5vw,7rem)] mt-[clamp(1rem,4vh,20rem)]'>
             <div className='header'>
               <p className='text-[20px] border-b-[1px] mb-[50px]'>Navigation</p>
               <ul>
@@ -322,9 +383,9 @@ export default function Home() {
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
-      <div className='hidden md:inline-block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[5]'></div>
+      {/*<div className='hidden md:inline-block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[5]'></div>*/}
        <div className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
-       <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-59.webp'} translateX={'0%'} opacity={0} width={1400} height={1473} />
+       <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-55.webp'} translateX={'0%'} opacity={0} width={1400} height={1473} />
       
         <DynamicHero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
         
