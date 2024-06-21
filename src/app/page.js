@@ -377,6 +377,7 @@ export default function Home() {
         className="blurred w-[100%] h-[100%] absolute bottom-[0%] left-0 object-cover opacity-50"
       >
         <source src="/images/bg12.webm" type="video/webm" />
+        <source src="/images/bg12.mp4" type="video/mp4" />
       </video>
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
