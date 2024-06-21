@@ -130,20 +130,20 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
   }, []);
 
   return (
-    <div ref={containerRef} className='h-full w-full left-0 top-0 absolute z-[50] overflow-hidden'>
-      <div className='w-[100%] 2xl:w-[90%] h-[auto] absolute bottom-0 left-0 right-0 top-[50%] xl:top-[45%] 2xl:top-[40%] m-auto text-center'>
-        <div className="overflow-hidden text-[clamp(40px,7vw,115px)] leading-[clamp(35px,6vw,85px)] uppercase font-[monument] text-[#fff] tracking-[0rem] whitespace-nowrap">
+    <div ref={containerRef} className='h-full w-full left-0 top-0 absolute flex items-center justify-center z-[50] overflow-hidden uppercase font-[monument] text-[#fff] tracking-[0rem] whitespace-nowrap'>
+      <div className='w-[100%] 2xl:w-[90%] h-[auto] text-[clamp(40px,7vw,115px)] leading-[clamp(35px,6vw,95px)] absolute bottom-0 left-0 right-0 top-[50%] xl:top-[45%] 2xl:top-[40%] m-auto text-center'>
+        <div className="overflow-hidden">
           <span ref={firsttext} className='translate-y-[100%] opacity-0 inline-block split2'>Hey There,</span>
         </div>
-        <div className="overflow-hidden text-[clamp(40px,7vw,115px)] leading-[clamp(35px,6vw,85px)] uppercase font-[monument] text-[#fff] tracking-[0rem] whitespace-nowrap">
+        <div className="overflow-hidden">
           <span ref={secondtext} className='translate-y-[-100%] opacity-0 inline-block split'>My Name&apos;s</span>
         </div>
         </div>
-        <div className='w-[100%] 2xl:w-[90%] h-[auto] absolute bottom-0 left-0 right-0 top-[45%] xl:top-[40%] 2xl:top-[35%] m-auto text-center 2xl:text-left'>
-        <div className="overflow-hidden text-[clamp(45px,8vw,125px)] leading-[clamp(35px,6.5vw,90px)] 3xl:text-[clamp(45px,8vw,150px)] 3xl:leading-[clamp(45px,8vw,115px)] uppercase font-[monument] text-[#fff] tracking-[0rem]">
+        <div className='flex-col w-[97%] 2xl:w-[90%] 2xl:pb-[5%] h-auto absolute text-center 2xl:text-left text-[clamp(45px,7vw,150px)] leading-[clamp(40px,6vw,125px)]'>
+        <div className="overflow-hidden">
           <span ref={thirdtext} className='translate-y-[120%] inline-block split2'>Creative</span>
         </div>
-        <div className="overflow-hidden text-[clamp(45px,8vw,125px)] leading-[clamp(35px,6.5vw,90px)] 3xl:text-[clamp(45px,8vw,150px)] 3xl:leading-[clamp(45px,8vw,115px)] uppercase font-[monument] text-[#fff] tracking-[0rem]">
+        <div className="overflow-hidden">
           <span ref={fourthtext} className='translate-y-[-120%] inline-block split'>Developer</span>
         </div>
       </div>
