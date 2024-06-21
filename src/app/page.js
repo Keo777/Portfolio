@@ -26,6 +26,7 @@ export default function Home() {
   const menuBtn = useRef(null);
   const menu = useRef(null);
   const [menuActive, setMenuActive] = useState(false);
+  const section2 = useRef(null);
   
 
   const handleMenuHover = (e) => {
@@ -117,61 +118,18 @@ export default function Home() {
   
 
     const setupScrollAnimations = () => {
-
+      const allAvatars = [hologramRef.current.avatars[0], hologramRef.current.avatars[1], hologramRef.current.avatars[2], hologramRef.current.avatars[3], hologramRef.current.avatars[4]];
 
       // Adding ScrollTrigger animation for avatar2, avatar3, and avatar4
-      gsap.to(hologramRef.current.avatars[0].current, {
-        x: "-20%",
+      gsap.to(allAvatars.current, {
+        x: "-5%",
         opacity: 0,
+        scale: 0.25,
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 90%", // start when the top of the element hits the bottom of the viewport
-          end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
+          start: "bottom bottom", // start when the top of the element hits the bottom of the viewport
+          end: "bottom top",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
-        },
-      });
-
-      gsap.to(hologramRef.current.avatars[1].current, {
-        x: "0%",
-        opacity: 0.0,
-        scrollTrigger: {
-          trigger: section1.current,
-          start: "bottom 90%", // start when the top of the element hits the bottom of the viewport
-          end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
-          scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
-        },
-      });
-
-      gsap.to(hologramRef.current.avatars[2].current, {
-        x: "20%",
-        opacity: 0.0,
-        scrollTrigger: {
-          trigger: section1.current,
-          start: "bottom 90%",
-          end: "bottom 20%",
-          scrub: true,
-        },
-      });
-
-      gsap.to(hologramRef.current.avatars[3].current, {
-        x: "40%",
-        opacity: 0,
-        scrollTrigger: {
-          trigger: section1.current,
-          start: "bottom 90%",
-          end: "bottom 20%",
-          scrub: true,
-        },
-      });
-
-      gsap.to(hologramRef.current.avatars[4].current, {
-        x: "60%",
-        opacity: 0,
-        scrollTrigger: {
-          trigger: section1.current,
-          start: "bottom 90%",
-          end: "bottom 20%",
-          scrub: true,
         },
       });
 
@@ -315,7 +273,7 @@ export default function Home() {
             <li className='mx-[clamp(10px,2vw,40px)] my-[2rem]'>Contact</li>
           </ul>
         </div>
-        <div ref={menuContainer} onClick={handleMenuClick} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} xl:translate-x-[150px] z-[101]`}>
+        <div ref={menuContainer} onClick={handleMenuClick} className={`${menuActive ? `${styles.menucontaineractive}` : `${styles.menucontainer}`} xl:translate-x-[50vw] z-[101]`}>
         <div ref={menuBtn} className='menu top-0 right-0 z-[101]' >
         <label className={`${styles.toggle}`}>
         <input className={`${menuActive && `${styles.active}`} ${styles.toggle}`} type="checkbox" onClick={(e) => e.stopPropagation()} />
@@ -344,7 +302,7 @@ export default function Home() {
         </div>
         <nav ref={menu} className='translate-x-[100%] navmenu fixed bg-[#111] h-[100vh] w-full md:w-auto top-0 right-0 text-white z-[99]'>
         <div className='body p-[100px] xl:pr-[200px] 3xl:pr-[400px] flex justify-center md:justify-between'>
-          <div className='nav flex flex-col text-[clamp(2rem,2.5vw,3rem)] font-[monument] uppercase gap-[12px] leading-[clamp(2.5rem,5vw,5rem)] mt-[clamp(1rem,4vh,20rem)]'>
+          <div className='nav flex flex-col text-[clamp(2.5rem,2.5vw,4rem)] font-[monument] uppercase gap-[12px] leading-[clamp(3.5rem,5vw,6rem)] mt-[clamp(0.5rem,2vh,5rem)]'>
             <div className='header'>
               <p className='text-[20px] border-b-[1px] mb-[50px]'>Navigation</p>
               <ul>
@@ -361,7 +319,7 @@ export default function Home() {
       
       
       
-      <div ref={section1} id="section1" className='h-[calc(100vh-60px)] md:h-screen w-full relative bg-[#111]'>
+      <div ref={section1} id="section1" className='h-[calc(100vh-60px)] md:h-screen w-full fixed top-0 bg-[#111]'>
       <video
         id="video3"
         autoPlay
@@ -383,7 +341,7 @@ export default function Home() {
         
       </div>
       </div>
-      <div id="section2" className='w-[100%] h-[100vh] bg-[#fff]'>
+      <div ref={section2} id="section2" className='w-[100%] h-[100vh] absolute top-[150vh] bg-[#fff] z-[100]'>
       
       </div>
       
