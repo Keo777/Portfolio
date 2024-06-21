@@ -123,8 +123,8 @@ export default function Home() {
       // Adding ScrollTrigger animation for avatar2, avatar3, and avatar4
       gsap.to(hologramRef.current.avatars[0].current, {
         opacity: 0,
-        rotationX: "60deg",
-        rotationY: "-45deg",
+        rotationX: "40deg",
+        rotationY: "-60deg",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom 50%", // start when the top of the element hits the bottom of the viewport
@@ -135,8 +135,8 @@ export default function Home() {
 
       gsap.to(hologramRef.current.avatars[1].current, {
         opacity: 0,
-        rotationX: "60deg",
-        rotationY: "-45deg",
+        rotationX: "40deg",
+        rotationY: "-60deg",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom 60%", // start when the top of the element hits the bottom of the viewport
@@ -147,8 +147,8 @@ export default function Home() {
 
       gsap.to(hologramRef.current.avatars[2].current, {
         opacity: 0,
-        rotationX: "60deg",
-        rotationY: "-45deg",
+        rotationX: "40deg",
+        rotationY: "-60deg",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom 70%",
@@ -159,8 +159,8 @@ export default function Home() {
 
       gsap.to(hologramRef.current.avatars[3].current, {
         opacity: 0,
-        rotationX: "60deg",
-        rotationY: "-45deg",
+        rotationX: "40deg",
+        rotationY: "-60deg",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom 85%",
@@ -171,8 +171,8 @@ export default function Home() {
 
       gsap.to(hologramRef.current.avatars[4].current, {
         opacity: 0,
-        rotationX: "60deg",
-        rotationY: "-45deg",
+        rotationX: "40deg",
+        rotationY: "-60deg",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom bottom",
