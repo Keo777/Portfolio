@@ -253,8 +253,8 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
   bottom: -50%;
   left: 0;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
-  -webkit-animation: drop2 7s 2s infinite;
-          animation: drop2 7s 2s infinite;
+  -webkit-animation: drop 7s s infinite;
+          animation: drop 7s 0s infinite;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
@@ -264,8 +264,8 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
   left: 26.75%;
 }
 .line:nth-child(1)::after {
-  -webkit-animation: drop 7s 0s infinite;
-          animation: drop 7s 0s infinite;
+  -webkit-animation: drop2 7s 2s infinite;
+          animation: drop2 7s 2s infinite;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);

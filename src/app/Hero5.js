@@ -11,6 +11,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
   const thirdtext = useRef(null);
   const fourthtext = useRef(null);
   const svgRef = useRef(null);
+  const svgContainer = useRef(null);
   const pathK = "m54.31,38.12l42.48,43.21h-24.94l-30.81-32.26-21.52,17.36v14.9H1.5V3.59h18.01v40.29L69.48,3.59h27.31l-42.48,34.53Z";
   const pathO = "m177.47,41.61c0-25.88,13.08-40.11,43.52-40.11s43.52,14.32,43.52,40.11-13.18,40.29-43.52,40.29-43.52-14.32-43.52-40.29Zm69.31,0c0-15.83-7.11-23.23-25.69-23.23s-25.69,7.3-25.69,23.23,7.21,23.42,25.69,23.42,25.69-7.49,25.69-23.42Z";
   const pathN = "m360.83,3.59v77.75h-24.27l-47.78-58.5v58.5h-18.01V3.59h24.18l47.88,58.69V3.59h18.01Z";
@@ -93,6 +94,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
 
   const reverseSvgPaths = () => {
     const svgPaths = svgRef.current.querySelectorAll('path');
+    
     gsap.to(svgPaths, {
       y: (index, target) => {
         return target.getAttribute('class').includes('translate-y-[-100%]') ? '-150%' : target.getAttribute('class').includes('translate-y-[100%]') ? '150%' : '';
@@ -101,13 +103,10 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
         return target.getAttribute('class').includes('translate-x-[-50%]') ? '-250%' : '0';
       },
       opacity: 0,
-      duration: 1,
-      ease: 'power4.inOut',
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'bottom 50%',
-        scrub: false,
-        toggleActions: 'play none reverse reverse',
+        start: 'bottom 70%',
+        scrub: true,
       },
     });
   };
@@ -153,7 +152,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
         <button className='w-full' onClick={() => toggleVideo(2)}>Video 2</button>
         <button className='w-full' onClick={() => toggleVideo(3)}>Video 3</button>
       </div>*/}
-      <div className='absolute w-[97%] 2xl:w-[90%] h-auto bottom-[5%] md:bottom-[2%] left-0 right-0 mx-auto z-[5]'>
+      <div ref={svgContainer} className='absolute w-[97%] 2xl:w-[90%] h-auto bottom-[5%] md:bottom-[2%] left-0 right-0 mx-auto z-[5]'>
         
       <svg onClick={cycleVideo} ref={svgRef} id="herologo" width="100%" height="100%" viewBox="0 0 507 85" preserveAspectRatio="none" className='cursor-pointer'>
 

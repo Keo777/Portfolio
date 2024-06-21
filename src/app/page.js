@@ -121,15 +121,63 @@ export default function Home() {
       const allAvatars = [hologramRef.current.avatars[0], hologramRef.current.avatars[1], hologramRef.current.avatars[2], hologramRef.current.avatars[3], hologramRef.current.avatars[4]];
 
       // Adding ScrollTrigger animation for avatar2, avatar3, and avatar4
-      gsap.to(allAvatars.current, {
-        x: "-5%",
+      gsap.to(hologramRef.current.avatars[0].current, {
         opacity: 0,
         scale: 0.25,
+        x: "25%",
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom bottom", // start when the top of the element hits the bottom of the viewport
-          end: "bottom top",   // end when the bottom of the element hits the top of the viewport
+          start: "bottom 80%", // start when the top of the element hits the bottom of the viewport
+          end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
+        },
+      });
+
+      gsap.to(hologramRef.current.avatars[1].current, {
+        opacity: 0,
+        scale: 0.25,
+        x: "30%",
+        scrollTrigger: {
+          trigger: section1.current,
+          start: "bottom 85%", // start when the top of the element hits the bottom of the viewport
+          end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
+          scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
+        },
+      });
+
+      gsap.to(hologramRef.current.avatars[2].current, {
+        opacity: 0,
+        scale: 0.25,
+        x: "35%",
+        scrollTrigger: {
+          trigger: section1.current,
+          start: "bottom 90%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+
+      gsap.to(hologramRef.current.avatars[3].current, {
+        opacity: 0,
+        scale: 0.25,
+        x: "38%",
+        scrollTrigger: {
+          trigger: section1.current,
+          start: "bottom 95%",
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+
+      gsap.to(hologramRef.current.avatars[4].current, {
+        opacity: 0,
+        scale: 0.25,
+        x: "40%",
+        scrollTrigger: {
+          trigger: section1.current,
+          start: "top top",
+          end: "bottom 20%",
+          scrub: true,
         },
       });
 
