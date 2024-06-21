@@ -367,7 +367,7 @@ export default function Home() {
       
       
       
-      <div ref={section1} id="section1" className='h-[calc(100vh-60px)] md:h-screen w-full fixed top-0 bg-[#111]'>
+      <div ref={section1} id="section1" className='h-screen md:h-screen w-full fixed top-0 bg-[#111]'>
       <video
         id="video3"
         autoPlay
