@@ -131,7 +131,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
 
   return (
     <div ref={containerRef} className='h-full w-full left-0 top-0 absolute z-[50] overflow-hidden'>
-      <div className='w-[100%] 2xl:w-[90%] h-[auto] absolute bottom-0 left-0 right-0 top-[50%] xl:top-[45%] 2xl:top-[40%] m-auto text-center 2xl:text-left'>
+      <div className='w-[100%] 2xl:w-[90%] h-[auto] absolute bottom-0 left-0 right-0 top-[50%] xl:top-[45%] 2xl:top-[40%] m-auto text-center'>
         <div className="overflow-hidden text-[clamp(40px,7vw,115px)] leading-[clamp(35px,6vw,85px)] uppercase font-[monument] text-[#fff] tracking-[0rem] whitespace-nowrap">
           <span ref={firsttext} className='translate-y-[100%] opacity-0 inline-block split2'>Hey There,</span>
         </div>
