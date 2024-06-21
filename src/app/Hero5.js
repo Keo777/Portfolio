@@ -70,7 +70,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
       onComplete: reverseSvgPaths
     }, "-=0.5")
     .to([firsttext.current, secondtext.current], {
-      letterSpacing: '2rem', opacity: 0, duration: 0.5, ease: "expoScale(0.5,7,none)",
+      y: "-100%", opacity: 0, duration: 0.5, ease: "expoScale(0.5,7,none)",
     }, "-=.25")
     .to(thirdtext.current, {
       y: 0, opacity: 1, stagger: 0.5, duration: 1.5, 
@@ -140,10 +140,10 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
         </div>
         </div>
         <div className='w-[100%] 2xl:w-[90%] h-[auto] absolute bottom-0 left-0 right-0 top-[45%] xl:top-[40%] 2xl:top-[35%] m-auto text-center 2xl:text-left'>
-        <div className="overflow-hidden text-[clamp(40px,8vw,125px)] leading-[clamp(35px,6.5vw,90px)] 3xl:text-[clamp(45px,8vw,150px)] 3xl:leading-[clamp(45px,8vw,115px)] uppercase font-[monument] text-[#fff] tracking-[0rem]">
+        <div className="overflow-hidden text-[clamp(45px,8vw,125px)] leading-[clamp(35px,6.5vw,90px)] 3xl:text-[clamp(45px,8vw,150px)] 3xl:leading-[clamp(45px,8vw,115px)] uppercase font-[monument] text-[#fff] tracking-[0rem]">
           <span ref={thirdtext} className='translate-y-[120%] inline-block split2'>Creative</span>
         </div>
-        <div className="overflow-hidden text-[clamp(40px,8vw,125px)] leading-[clamp(35px,6.5vw,90px)] 3xl:text-[clamp(45px,8vw,150px)] 3xl:leading-[clamp(45px,8vw,115px)] uppercase font-[monument] text-[#fff] tracking-[0rem]">
+        <div className="overflow-hidden text-[clamp(45px,8vw,125px)] leading-[clamp(35px,6.5vw,90px)] 3xl:text-[clamp(45px,8vw,150px)] 3xl:leading-[clamp(45px,8vw,115px)] uppercase font-[monument] text-[#fff] tracking-[0rem]">
           <span ref={fourthtext} className='translate-y-[-120%] inline-block split'>Developer</span>
         </div>
       </div>

@@ -123,60 +123,60 @@ export default function Home() {
       // Adding ScrollTrigger animation for avatar2, avatar3, and avatar4
       gsap.to(hologramRef.current.avatars[0].current, {
         opacity: 0,
-        scale: 0.25,
-        x: "25%",
+        rotationX: "60deg",
+        rotationY: "-45deg",
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 80%", // start when the top of the element hits the bottom of the viewport
-          end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
+          start: "bottom 50%", // start when the top of the element hits the bottom of the viewport
+          end: "bottom top",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
       });
 
       gsap.to(hologramRef.current.avatars[1].current, {
         opacity: 0,
-        scale: 0.25,
-        x: "30%",
+        rotationX: "60deg",
+        rotationY: "-45deg",
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 85%", // start when the top of the element hits the bottom of the viewport
-          end: "bottom 20%",   // end when the bottom of the element hits the top of the viewport
+          start: "bottom 60%", // start when the top of the element hits the bottom of the viewport
+          end: "bottom top",   // end when the bottom of the element hits the top of the viewport
           scrub: true,         // smooth scrubbin, // prevents jumps by starting from current position
         },
       });
 
       gsap.to(hologramRef.current.avatars[2].current, {
         opacity: 0,
-        scale: 0.25,
-        x: "35%",
+        rotationX: "60deg",
+        rotationY: "-45deg",
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 90%",
-          end: "bottom 20%",
+          start: "bottom 70%",
+          end: "bottom top",
           scrub: true,
         },
       });
 
       gsap.to(hologramRef.current.avatars[3].current, {
         opacity: 0,
-        scale: 0.25,
-        x: "38%",
+        rotationX: "60deg",
+        rotationY: "-45deg",
         scrollTrigger: {
           trigger: section1.current,
-          start: "bottom 95%",
-          end: "bottom 20%",
+          start: "bottom 85%",
+          end: "bottom top",
           scrub: true,
         },
       });
 
       gsap.to(hologramRef.current.avatars[4].current, {
         opacity: 0,
-        scale: 0.25,
-        x: "40%",
+        rotationX: "60deg",
+        rotationY: "-45deg",
         scrollTrigger: {
           trigger: section1.current,
-          start: "top top",
-          end: "bottom 20%",
+          start: "bottom bottom",
+          end: "bottom top",
           scrub: true,
         },
       });
@@ -389,8 +389,8 @@ export default function Home() {
         
       </div>
       </div>
-      <div ref={section2} id="section2" className='w-[100%] h-[100vh] absolute top-[150vh] bg-[#fff] z-[100]'>
-      
+      <div ref={section2} id="section2" className='w-[100%] h-[100vh] absolute flex items-center justify-center top-[150vh] bg-[#fff] text-black z-[10]'>
+      <h1 className='text-[5vw] font-[monument] uppercase'>Under Construction</h1>
       </div>
       
       
