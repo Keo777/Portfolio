@@ -377,7 +377,7 @@ export default function Home() {
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
       <div className='hidden lg:inline-block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[10]'></div>
        <div className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
-       <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-62.webp'} translateX={'0%'} opacity={0} width={1400} height={1473} />
+       <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-65.webp'} translateX={'0%'} opacity={0} width={1843} height={1843} />
       
         <DynamicHero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
         
