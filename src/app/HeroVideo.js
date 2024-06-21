@@ -9,7 +9,7 @@ const HeroVideo = ({ activeVideo }) => {
   useEffect(() => {
     // Animate intro for the first video on mount
     
-    gsap.to(container.current, { opacity: 1, duration: 3 });
+    gsap.to(container.current, { y: 0, duration: 1 });
     
   }, []);
 
@@ -38,7 +38,7 @@ const HeroVideo = ({ activeVideo }) => {
   
 
   return (
-    <div ref={container} className='opacity-0'>
+    <div ref={container} className='opacity-1 absolute left-0 top-0 right-0 bottom-0 mx-auto translate-y-[100%]'>
       <video
         ref={videoRefs[0]}
         id="video1"

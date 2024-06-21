@@ -182,7 +182,7 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
 .noise {
   background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
   background-repeat: repeat;
-  animation: bg-animation .2s infinite;
+  animation: bg-animation .5s infinite;
   opacity: 100%;
   visibility: visible;
 }
@@ -240,7 +240,7 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
   width: 1px;
   height: 100%;
   top: 0;
-  left: 30%;
+  left: 2.5%;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
@@ -261,7 +261,7 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
           animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
 }
 .line:nth-child(1) {
-  margin-left: -20%;
+  left: 26.75%;
 }
 .line:nth-child(1)::after {
   -webkit-animation: drop 7s 0s infinite;
@@ -272,7 +272,7 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
           animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.7);
 }
 .line:nth-child(2) {
-  margin-left: 20%;
+  left: 50%;
 }
 .line:nth-child(2)::after {
   -webkit-animation: drop 7s 1s infinite;
@@ -284,7 +284,7 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
 }
 
 .line:nth-child(3) {
-  margin-left: 40%;
+  left: 73.25%;
 }
 .line:nth-child(3)::after {
   -webkit-animation: drop2 7s 2s infinite;
@@ -296,7 +296,7 @@ box-shadow: 0px 20px 26px 10px rgba(0,0,0,0.75);
 }
 
 .line:nth-child(4) {
-  margin-left: 60%;
+  left: 97.5%;
 }
 .line:nth-child(4)::after {
   -webkit-animation: drop 7s 0s infinite;

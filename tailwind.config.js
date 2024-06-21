@@ -6,7 +6,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  safelist: ["xl:right-[-40%]", "2xl:right-[-30%]"],
+  safelist: ["xl:right-[-40%]", "2xl:right-[-40%]"],
   theme: {
     screens: {
       'sm': '640px',

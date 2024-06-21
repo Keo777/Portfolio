@@ -16,7 +16,7 @@ const HologramImg = forwardRef(({ numImages, src, translateX, opacity, width, he
   }), [avatarRefs]);
 
   const avatars = Array.from({ length: numImages }, (_, index) => ({
-    scale: 1 - index * 0.05,
+    scale: 1 - index * 0.03,
     top: `${index}%`,
     zIndex: numImages - index,
   }));
@@ -41,7 +41,7 @@ const HologramImg = forwardRef(({ numImages, src, translateX, opacity, width, he
           right={0}
           left={0}
           xlRight="0"
-          xxlRight="0"
+          xxlRight="-40%"
         />
       ))}
     </>

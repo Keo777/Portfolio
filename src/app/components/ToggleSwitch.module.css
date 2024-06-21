@@ -26,7 +26,7 @@
 
   @media (min-width: 1450px) {
     .toggle input + div {
-      width: 80px;
+      width: 60px;
       height: 20px;
     }
     
@@ -112,9 +112,9 @@
   @media (min-width: 1450px) {
     .toggle input + div svg {
       stroke-width: 1px;
-      width: 80px;
-      height: 80px;
-      margin: -40px 0 0 -40px;
+      width: 60px;
+      height: 60px;
+      margin: -30px 0 0 -30px;
     }
     
   }
@@ -143,16 +143,16 @@
 
   @media (min-width: 1450px) {
     .toggle input.active + div div span:first-child:before {
-      transform: rotate(45deg) translate(17px, -22px) scaleX(0.5);
+      transform: rotate(45deg) translate(15px, -15px) scaleX(0.5);
     }
     .toggle input.active + div div span:first-child:after {
-      transform: rotate(-45deg) translate(-17px, -22px) scaleX(0.5);
+      transform: rotate(-45deg) translate(-15px, -15px) scaleX(0.5);
     }
     .toggle input.active + div div span:last-child:before {
-      transform: rotate(-45deg) translate(17px, 22px) scaleX(0.5);
+      transform: rotate(-45deg) translate(15px, 15px) scaleX(0.5);
     }
     .toggle input.active + div div span:last-child:after {
-      transform: rotate(45deg) translate(-17px, 22px) scaleX(0.5);
+      transform: rotate(45deg) translate(-15px, 15px) scaleX(0.5);
     }
   }
 
