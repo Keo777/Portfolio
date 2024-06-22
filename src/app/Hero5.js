@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 import Image from 'next/image';
 import svg4everybody from 'svg4everybody';
 import HeroVideo from './HeroVideo';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
   const containerRef = useRef(null);
@@ -23,6 +26,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
   const pathS = "m435.55,53.84c0,8.22,5.95,11.99,28.43,11.99,18.61,0,24.28-2.36,24.28-8.41,0-6.42-3.96-7.56-26.36-8.79-30.04-1.51-42.04-6.89-42.04-24.37s15.49-22.57,41.28-22.57,41.75,7.37,41.75,26.55h-17.76c0-8.6-7.56-10.68-25.98-10.68s-21.64,1.89-21.64,7.65c0,6.05,4.15,7.08,24.28,8.41,27.2,1.7,44.02,3.31,44.02,23.05,0,20.78-17.47,25.03-42.98,25.03-28.24,0-45.15-5.48-45.15-27.87h17.85,0Z";
   const [showHeroVideo, setShowHeroVideo] = useState(false);
   const [shouldRenderHeroVideo, setShouldRenderHeroVideo] = useState(true); // Default to true, meaning it renders on non-iOS devices
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -37,64 +41,134 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
 
   useEffect(() => {
     svg4everybody();
-    const animateIntro = async () => {
-      
-    const tl = gsap.timeline({defaults: {ease: 'power4.inOut'}})
+    animateIntro();
+  }, []);
 
-    tl
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1536);
+    };
 
-    .to(firsttext.current, {
-      y: 0, opacity: 1, stagger: 0.5, duration: 1, 
-    }, "")
-    .to(firsttext.current, {
-      clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)', duration: 2
-    }, "-=1.25")
-    .to(secondtext.current, {
-      y: 0, opacity: 1, stagger: 0.5, duration: 1, 
-    }, "-=1.75")
-    .to(secondtext.current, {
-      clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)', duration: 2
-    }, "-=2")
-    .to(svgRef.current.querySelectorAll('path'), {
+    // Initial check
+    checkScreenSize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Setup GSAP animation for thirdtext and fourthtext based on isMobile state
+    const setupScrollTriggerAnimation = () => {
+      const elementsToAnimate = [thirdtext.current, fourthtext.current];
+
+      elementsToAnimate.forEach(element => {
+        const animation = gsap.to(element, {
+          scale: 0.25,
+          x: isMobile ? "0%" : "50%",
+          opacity: 0,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'bottom bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+
+        // Store the animation in a data attribute for cleanup
+        element.animation = animation;
+      });
+    };
+
+    setupScrollTriggerAnimation();
+
+    // Cleanup ScrollTrigger on component unmount
+    return () => {
+      // Kill only the ScrollTriggers related to thirdtext and fourthtext
+      [thirdtext.current, fourthtext.current].forEach(element => {
+        if (element.animation) {
+          element.animation.kill();
+        }
+      });
+    };
+  }, [isMobile]);
+
+  const animateIntro = () => {
+    const tl = gsap.timeline({ defaults: { ease: 'power4.inOut' } });
+
+    tl.to(firsttext.current, {
       y: 0,
-      duration: 1,
-      stagger: 0.01,
-      ease: 'power4.inOut'
-    }, "-=1.5")
-    .to(svgRef.current.querySelectorAll('path'), {
-      x: 0,
       opacity: 1,
+      stagger: 0.5,
       duration: 1,
-      stagger: 0.01,
-      ease: "back.out(1.7)",
-      onComplete: reverseSvgPaths
-    }, "-=0.5")
-    .to([firsttext.current, secondtext.current], {
-      y: "-100%", opacity: 0, duration: 0.5, ease: "expoScale(0.5,7,none)",
-    }, "-=.25")
-    .to(thirdtext.current, {
-      y: 0, opacity: 1, stagger: 0.5, duration: 1.5, 
-    }, )
-    .to(thirdtext.current, {
-      clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)', duration: 1.75
-    }, "-=1.45")
-    .to(fourthtext.current, {
-      y: 0, opacity: 1, stagger: 0.5, duration: 2,
-    }, "-=2")
-    
-    .to(fourthtext.current, {
-      clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)', duration: 2
-    }, "-=2.25")
-    
-    .add(() => {
-      // Mount the HeroVideo component at this point in the timeline
-      setShowHeroVideo(true);
-    }, "-=1.25");
+    }, "")
+      .to(firsttext.current, {
+        clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+        duration: 2
+      }, "-=1.25")
+      .to(secondtext.current, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.5,
+        duration: 1,
+      }, "-=1.75")
+      .to(secondtext.current, {
+        clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+        duration: 2
+      }, "-=2")
+      .to(svgRef.current.querySelectorAll('path'), {
+        y: 0,
+        duration: 1,
+        stagger: 0.01,
+        ease: 'power4.inOut'
+      }, "-=1.5")
+      .to(svgRef.current.querySelectorAll('path'), {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.01,
+        ease: "back.out(1.7)",
+        onComplete: reverseSvgPaths
+      }, "-=0.5")
+      .to([firsttext.current, secondtext.current], {
+        y: "-100%",
+        opacity: 0,
+        duration: 0.5,
+        ease: "expoScale(0.5,7,none)",
+      }, "-=.25")
+      .to(thirdtext.current, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.5,
+        duration: 1.5,
+      })
+      .to(thirdtext.current, {
+        clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+        duration: 1.75
+      }, "-=1.45")
+      .to(fourthtext.current, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.5,
+        duration: 2,
+      }, "-=2")
+      .to(fourthtext.current, {
+        clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+        duration: 2
+      }, "-=2.25")
+      .add(() => {
+        // Mount the HeroVideo component at this point in the timeline
+        setShowHeroVideo(true);
+      }, "-=1.25");
   };
 
   const reverseSvgPaths = () => {
     const svgPaths = svgRef.current.querySelectorAll('path');
-    
+
     gsap.to(svgPaths, {
       y: (index, target) => {
         return target.getAttribute('class').includes('translate-y-[-100%]') ? '-150%' : target.getAttribute('class').includes('translate-y-[100%]') ? '150%' : '';
@@ -111,23 +185,6 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
     });
   };
 
-  gsap.to([thirdtext.current, fourthtext.current], {
-    scale: 0.25,
-    opacity: 0,
-    scrollTrigger: {
-      trigger: containerRef.current,
-        start: 'bottom bottom',
-        end: 'bottom top',  
-      scrub: true,        
-    },
-  });
-
-  
-  
-  animateIntro();
-
-
-  }, []);
 
   return (
     <div ref={containerRef} className='h-full w-full left-0 top-0 absolute flex items-center justify-center z-[50] overflow-hidden uppercase font-[monument] text-[#fff] tracking-[0rem] whitespace-nowrap'>

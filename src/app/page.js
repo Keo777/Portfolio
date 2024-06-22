@@ -125,6 +125,7 @@ export default function Home() {
         opacity: 0,
         rotationX: "40deg",
         rotationY: "-60deg",
+        x: "-25%",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom 50%", // start when the top of the element hits the bottom of the viewport
@@ -137,6 +138,7 @@ export default function Home() {
         opacity: 0,
         rotationX: "40deg",
         rotationY: "-60deg",
+        x: "-25%",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom 60%", // start when the top of the element hits the bottom of the viewport
@@ -149,6 +151,7 @@ export default function Home() {
         opacity: 0,
         rotationX: "40deg",
         rotationY: "-60deg",
+        x: "-25%",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom 70%",
@@ -161,6 +164,7 @@ export default function Home() {
         opacity: 0,
         rotationX: "40deg",
         rotationY: "-60deg",
+        x: "-25%",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom 85%",
@@ -173,6 +177,7 @@ export default function Home() {
         opacity: 0,
         rotationX: "40deg",
         rotationY: "-60deg",
+        x: "-25%",
         scrollTrigger: {
           trigger: section1.current,
           start: "bottom bottom",
@@ -192,6 +197,10 @@ export default function Home() {
           start: 'bottom 50%',
           toggleActions: 'play none reverse reverse',
         },
+      });
+
+      gsap.to(section2.current, {
+        display: 'flex',
       });
     };
 
@@ -390,7 +399,7 @@ export default function Home() {
         
       </div>
       </div>
-      <div ref={section2} id="section2" className='w-[100%] h-[100vh] absolute flex items-center justify-center top-[150vh] bg-[#fff] text-black z-[10]'>
+      <div ref={section2} id="section2" className='hidden w-[100%] h-[100vh] absolute items-center justify-center top-[150vh] bg-[#fff] text-black z-[10]'>
       <h1 className='text-[5vw] font-[monument] uppercase'>Under Construction</h1>
       </div>
       
