@@ -253,7 +253,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
               <path className='translate-y-[-100%] cls-1' d={pathS}/>
             </clipPath>
           </defs>
-          <foreignObject x="0" y="0" width="100%" height="100%" style={{ clipPath: 'url(#clipPath)', WebkitClipPath: 'url(#clipPath)',}} className='inline-block overflow-visible'>
+          <foreignObject x="0" y="0" width="100%" height="100%" style={{ clipPath: 'url(#clipPath)', WebkitClipPath: 'url(#clipPath)',}} className='hidden xl:block overflow-visible'>
           <div style={{ width: '100%', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0)' }}>
             {shouldRenderHeroVideo && showHeroVideo && <HeroVideo activeVideo={activeVideo} containerRef={containerRef} toggleVideo={toggleVideo} />}
           </div>

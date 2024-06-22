@@ -438,7 +438,7 @@ export default function Home() {
       <BgLines1 />
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
-      <div className='hidden lg:inline-block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[10]'></div>
+      <div className='hidden xl:block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[10]'></div>
        <div ref={section1Content} className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
        <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-65.webp'} translateX={'0%'} opacity={0} width={1843} height={1843} />
       
