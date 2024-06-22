@@ -21,6 +21,11 @@ export default function Home() {
   const nav = useRef(null);
   const xlMenu = useRef(null);
   const svgRef = useRef(null);
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const servicesRef = useRef(null);
+  const workRef = useRef(null);
+  const contactRef = useRef(null);
   const hologramRef = useRef(null);
   const tint = useRef(null);
   const [activeVideo, setActiveVideo] = useState(3);
@@ -255,21 +260,34 @@ export default function Home() {
 
     useEffect(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.inOut' } });
+      const links = [homeRef.current, aboutRef.current, servicesRef.current, workRef.current, contactRef.current]
     
       if (menuActive) {
         // Animate menu to translateX(0) when menuActive is true
         tl.to(menu.current, {
           translateX: 0,
+          duration: 0.75,
+        })
+        .to(links, {
+          y: 0,
+          stagger: 0.1,
           duration: 1,
-          ease: 'power4.inOut'
-        });
+        }, "-=.5");
+
       } else {
         // Animate menu to translateX(100%) when menuActive is false
-        tl.to(menu.current, {
+        tl
+        .to(links, {
+          y: "100%",
+          stagger: -0.1,
+          duration: 0.75,
+        })
+        .to(menu.current, {
           translateX: '100%',
-          duration: 1,
+          duration: 0.5,
           ease: 'power4.inOut'
-        });
+        }, "-=.25");
+        
       }
     }, [menuActive]);
 
@@ -392,11 +410,11 @@ export default function Home() {
             <div className='header'>
               <p className='text-[20px] border-b-[1px] mb-[50px]'>Navigation</p>
               <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Services</li>
-                <li>Work</li>
-                <li>Contact</li>
+                <div className='overflow-hidden'><span ref={homeRef} className='translate-y-full inline-block'>Home</span></div>
+                <div className='overflow-hidden'><span ref={aboutRef} className='translate-y-full inline-block'>About</span></div>
+                <div className='overflow-hidden'><span ref={servicesRef} className='translate-y-full inline-block'>Services</span></div>
+                <div className='overflow-hidden'><span ref={workRef} className='translate-y-full inline-block'>Work</span></div>
+                <div className='overflow-hidden'><span ref={contactRef} className='translate-y-full inline-block'>Contact</span></div>
               </ul>
             </div>
           </div>
