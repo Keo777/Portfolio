@@ -1,44 +1,66 @@
-// components/YoyoVideo.js
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
-const HeroVideo = ({ activeVideo }) => {
+gsap.registerPlugin(ScrollTrigger);
+
+const HeroVideo = ({ activeVideo, containerRef }) => {
   const videoRefs = [useRef(null), useRef(null), useRef(null)];
   const container = useRef(null);
 
   useEffect(() => {
-    // Animate intro for the first video on mount
-    
-    gsap.to(container.current, { y: 0, duration: 1 });
-    
-  }, []);
+    // Ensure containerRef is defined before using it
+    if (containerRef && containerRef.current) {
+      // Create a timeline
+      const tl = gsap.timeline();
+
+      // Set the initial position
+      tl.set(container.current, {
+        y: "100%",
+      });
+
+      // Initial animation to move from y: "50%" to y: 0
+      tl.to(container.current, {
+        y: 0,
+        duration: 1,
+      });
+
+      // ScrollTrigger animation
+      tl.to(container.current, {
+        y: "125%",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "bottom bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+  }, [containerRef]);
 
   useEffect(() => {
     videoRefs.forEach((ref, index) => {
       const video = ref.current;
   
-      // Ensure video element and HTMLVideoElement methods are available
       if (video instanceof HTMLVideoElement) {
         if (index === activeVideo - 1) {
           gsap.to(video, { opacity: 1, duration: 1 });
           video.play().catch(error => {
-            // Handle play promise rejection (e.g., autoplay policy)
             console.error('Error playing video:', error);
           });
         } else {
           gsap.to(video, { opacity: 0, duration: 1 });
           video.pause();
-          video.currentTime = 0; // Optional: reset video to start
+          video.currentTime = 0;
         }
       } else {
         console.warn('Ref is not pointing to an HTMLVideoElement:', video);
       }
     });
   }, [activeVideo, videoRefs]);
-  
 
   return (
-    <div ref={container} className='opacity-1 absolute left-0 top-0 right-0 bottom-0 mx-auto translate-y-[100%]'>
+    <div ref={container} className='opacity-1 absolute left-0 top-0 right-0 bottom-0 mx-auto'>
       <video
         ref={videoRefs[0]}
         id="video1"

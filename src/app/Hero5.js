@@ -66,11 +66,12 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
     const setupScrollTriggerAnimation = () => {
       const elementsToAnimate = [thirdtext.current, fourthtext.current];
 
-      elementsToAnimate.forEach(element => {
+      elementsToAnimate.forEach((element, index) => {
         const animation = gsap.to(element, {
           scale: 0.25,
-          x: isMobile ? "0%" : "50%",
+          x: isMobile ? "0%" : "25%",
           opacity: 0,
+          delay: 1 * index,
           scrollTrigger: {
             trigger: containerRef.current,
             start: 'bottom bottom',
@@ -126,6 +127,11 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
         stagger: 0.01,
         ease: 'power4.inOut'
       }, "-=1.5")
+      .to(svgContainer.current, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.inOut'
+      }, "<")
       .to(svgRef.current.querySelectorAll('path'), {
         x: 0,
         opacity: 1,
@@ -209,15 +215,15 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
         <button className='w-full' onClick={() => toggleVideo(2)}>Video 2</button>
         <button className='w-full' onClick={() => toggleVideo(3)}>Video 3</button>
       </div>*/}
-      <div ref={svgContainer} className='absolute w-[97%] 2xl:w-[90%] h-auto bottom-[12%] md:bottom-[2%] left-0 right-0 mx-auto z-[5]'>
+      <div ref={svgContainer} className='absolute w-[97%] 2xl:w-[90%] h-auto bottom-[12%] md:bottom-[2%] left-0 right-0 mx-auto z-[5] opacity-0'>
         
-      <svg onClick={cycleVideo} ref={svgRef} id="herologo" width="100%" height="100%" viewBox="0 0 507 85" preserveAspectRatio="none" className='cursor-pointer'>
+      <svg onClick={cycleVideo} ref={svgRef} id="herologo" width="100%" height="100%" viewBox="0 0 507 85" preserveAspectRatio="none" className='cursor-pointer overflow-visible'>
 
             <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-y-[-100%] cls-1' d={pathK}/>
             <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-y-[-100%] cls-1' d={pathO}/>
             <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-y-[100%] cls-1' d={pathN}/>
             <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-y-[-100%] cls-1' d={pathI1}/>
-            <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-x-[-50%] opacity-0 cls-1' d={pathEMiddle}/>
+            <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-x-[-50%] cls-1' d={pathEMiddle}/>
             <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-y-[-100%] cls-1' d={pathETop}/>
             <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-y-[100%] cls-1' d={pathEBottom}/>
             <path stroke="rgba(255, 255, 255, 0.5)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill={shouldRenderHeroVideo && "rgba(255, 255, 255, 1)" || "rgba(255, 255, 255, 1"} className='translate-y-[100%] cls-1' d={pathI2}/>
@@ -228,7 +234,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
             <path stroke="rgba(255, 255, 255, 0.75)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill="none" className={`${shouldRenderHeroVideo ? 'animated' : 'animated-ios'} translate-y-[-100%] cls-1`} d={pathO}/>
             <path stroke="rgba(255, 255, 255, 0.75)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill="none" className={`${shouldRenderHeroVideo ? 'animated' : 'animated-ios'} translate-y-[100%] cls-1`} d={pathN}/>
             <path stroke="rgba(255, 255, 255, 0.75)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill="none" className={`${shouldRenderHeroVideo ? 'animated' : 'animated-ios'} translate-y-[-100%] cls-1`} d={pathI1}/>
-            <path stroke="rgba(255, 255, 255, 0.75)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill="none" className={`${shouldRenderHeroVideo ? 'animated' : 'animated-ios'} translate-x-[-50%] opacity-0 cls-1`} d={pathEMiddle}/>
+            <path stroke="rgba(255, 255, 255, 0.75)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill="none" className={`${shouldRenderHeroVideo ? 'animated' : 'animated-ios'} translate-x-[-50%] cls-1`} d={pathEMiddle}/>
             <path stroke="rgba(255, 255, 255, 0.75)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill="none" className={`${shouldRenderHeroVideo ? 'animated' : 'animated-ios'} translate-y-[-100%] cls-1`} d={pathETop}/>
             <path stroke="rgba(255, 255, 255, 0.75)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill="none" className={`${shouldRenderHeroVideo ? 'animated' : 'animated-ios'} translate-y-[100%] cls-1`} d={pathEBottom}/>
             <path stroke="rgba(255, 255, 255, 0.75)" strokeWidth={shouldRenderHeroVideo && "1" || "3"} strokeLinejoin="round" strokeLinecap="round" fill="none" className={`${shouldRenderHeroVideo ? 'animated' : 'animated-ios'} translate-y-[100%] cls-1`} d={pathI2}/>
@@ -247,9 +253,9 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
               <path className='translate-y-[-100%] cls-1' d={pathS}/>
             </clipPath>
           </defs>
-          <foreignObject x="0" y="0" width="100%" height="100%" style={{ clipPath: 'url(#clipPath)', WebkitClipPath: 'url(#clipPath)',}} className='inline-block'>
-          <div style={{ width: '100%', height: '100%', overflow: 'hidden', backgroundColor: 'rgba(255, 255, 255, 0)' }}>
-            {shouldRenderHeroVideo && showHeroVideo && <HeroVideo activeVideo={activeVideo} toggleVideo={toggleVideo} />}
+          <foreignObject x="0" y="0" width="100%" height="100%" style={{ clipPath: 'url(#clipPath)', WebkitClipPath: 'url(#clipPath)',}} className='inline-block overflow-visible'>
+          <div style={{ width: '100%', height: '100%', backgroundColor: 'rgba(255, 255, 255, 0)' }}>
+            {shouldRenderHeroVideo && showHeroVideo && <HeroVideo activeVideo={activeVideo} containerRef={containerRef} toggleVideo={toggleVideo} />}
           </div>
         </foreignObject>
         </svg>

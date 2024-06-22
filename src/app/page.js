@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from "react";
+import Lenis from "@studio-freight/lenis";
 import Image from "next/image";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -16,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const section1 = useRef(null);
+  const section1Content = useRef(null);
   const nav = useRef(null);
   const xlMenu = useRef(null);
   const svgRef = useRef(null);
@@ -57,6 +59,33 @@ export default function Home() {
   const cycleVideo = () => {
     setActiveVideo((prevVideo) => (prevVideo % 3) + 1);
   };
+
+  useEffect(() => {
+    // Initialize Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // custom easing function
+      direction: 'vertical', // vertical or horizontal
+      gestureDirection: 'vertical', // vertical or horizontal
+      smooth: true,
+      smoothTouch: false, // disable smoothing on touch devices
+      touchMultiplier: 2, // increase touch sensitivity
+      infinite: false, // infinite scrolling
+    });
+
+    // Update Lenis
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      // Clean up Lenis instance on unmount
+      lenis.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     const animateIntro = async () => {
@@ -392,7 +421,7 @@ export default function Home() {
       {/*<Image src={'/images/bg-img7.jpg'} width={3072} height={1856} className='w-full h-full absolute top-0 left-0 z-[0]' />*/}
       <div ref={tint} className='hidden md:inline-block bg-[#145363] opacity-0 w-full h-full absolute z-[5] mix-blend-color'></div>
       <div className='hidden lg:inline-block noise w-[400vw] h-[400vh] left-[-100vw] top-[-100vh] mx-auto fixed z-[10]'></div>
-       <div className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
+       <div ref={section1Content} className=' h-full w-full left-0 right-0 mx-auto absolute overflow-hidden'>
        <HologramImg ref={hologramRef} numImages={5} src={'/images/keoniis-65.webp'} translateX={'0%'} opacity={0} width={1843} height={1843} />
       
         <DynamicHero5 activeVideo={activeVideo} toggleVideo={toggleVideo} cycleVideo={cycleVideo} />
