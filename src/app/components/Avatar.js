@@ -10,7 +10,7 @@ const Avatar = forwardRef(({ src, translateX, scale, opacity, zIndex, bottom, to
       src={src}
       height={height}
       width={width}
-      className={`opacity-${opacity} w-[clamp(25rem,55vw,60rem)] absolute bottom-${bottom} top-${top} right-${right} left-${left} xl:right-[${xlRight}] 2xl:right-[${xxlRight}] m-auto z-[${zIndex}] `}
+      className={`opacity-${opacity} w-[clamp(25rem,50vw,60rem)] absolute bottom-${bottom} top-${top} right-${right} left-${left} xl:right-[${xlRight}] 2xl:right-[${xxlRight}] m-auto z-[${zIndex}] `}
       style={{ transform: `translateX(${translateX}) scale(${scale})`, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
     />
   );

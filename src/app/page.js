@@ -21,6 +21,8 @@ export default function Home() {
   const nav = useRef(null);
   const xlMenu = useRef(null);
   const svgRef = useRef(null);
+  const navTitle = useRef(null);
+  const navTitleLine = useRef(null);
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
@@ -268,25 +270,33 @@ export default function Home() {
           translateX: 0,
           duration: 0.75,
         })
+        .to(navTitle.current, {
+          x: 0,
+          duration: 2,
+        }, "<")
+        .to(navTitleLine.current, {
+          width: "100%",
+          duration: 2,
+        }, "<")
         .to(links, {
           y: 0,
           stagger: 0.1,
-          duration: 1,
-        }, "-=.5");
+          duration: .75,
+        }, "-=1");
 
       } else {
         // Animate menu to translateX(100%) when menuActive is false
         tl
         .to(links, {
           y: "100%",
-          stagger: -0.1,
+          stagger: -0.075,
           duration: 0.75,
         })
         .to(menu.current, {
           translateX: '100%',
           duration: 0.5,
           ease: 'power4.inOut'
-        }, "-=.25");
+        }, "-=.5");
         
       }
     }, [menuActive]);
@@ -408,7 +418,8 @@ export default function Home() {
         <div className='body p-[100px] xl:pr-[200px] 3xl:pr-[400px] flex justify-center md:justify-between'>
           <div className='nav flex flex-col text-[clamp(2.5rem,2.5vw,4rem)] font-[monument] uppercase gap-[12px] leading-[clamp(3.5rem,5vw,6rem)] mt-[clamp(0.5rem,2vh,5rem)]'>
             <div className='header'>
-              <p className='text-[20px] border-b-[1px] mb-[50px]'>Navigation</p>
+              <p ref={navTitle} className='text-[20px] mb-[0px] translate-x-[50%]'>Navigation</p>
+              <div ref={navTitleLine} className='h-[1px] mb-[50px] w-[1px] bg-white'></div>
               <ul>
                 <div className='overflow-hidden'><span ref={homeRef} className='translate-y-full inline-block'>Home</span></div>
                 <div className='overflow-hidden'><span ref={aboutRef} className='translate-y-full inline-block'>About</span></div>

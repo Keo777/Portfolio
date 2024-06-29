@@ -28,7 +28,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
   const [shouldRenderHeroVideo, setShouldRenderHeroVideo] = useState(true); // Default to true, meaning it renders on non-iOS devices
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
+ {/*} useEffect(() => {
     const userAgent = window.navigator.userAgent.toLowerCase();
     console.log('User Agent:', userAgent); // Debugging purpose to check user agent string
 
@@ -37,7 +37,7 @@ const Hero5 = ({ activeVideo, toggleVideo, cycleVideo }) => {
     if (isIOS) {
       setShouldRenderHeroVideo(false); // Disable rendering on iOS devices
     }
-  }, []);
+  }, []); */}
 
   useEffect(() => {
     svg4everybody();
